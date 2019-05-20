@@ -2,190 +2,129 @@
 
 var path = require('path');
 
+var expect = require('expect');
 var fs = require('graceful-fs');
 var miss = require('mississippi');
-var expect = require('expect');
+var rimraf = require('rimraf');
 
 var vfs = require('../');
 
-var cleanup = require('./utils/cleanup');
 var isWindows = require('./utils/is-windows');
-var testStreams = require('./utils/test-streams');
 var testConstants = require('./utils/test-constants');
+var testStreams = require('./utils/test-streams');
 
-var pipe = miss.pipe;
 var concat = miss.concat;
+var pipe = miss.pipe;
 
 var count = testStreams.count;
 
-var base = testConstants.outputBase;
-var inputDirpath = testConstants.inputDirpath;
-var outputDirpath = testConstants.outputDirpath;
-var symlinkDirpath = testConstants.symlinkDirpath;
-var inputBase = path.join(base, './in/');
-var inputDirpath = testConstants.inputDirpath;
-var outputDirpath = testConstants.outputDirpath;
-var symlinkDirpath = testConstants.symlinkDirpath;
-var inputGlob = path.join(inputBase, './*.txt');
-var outputBase = path.join(base, './out/');
-var outputSymlink = path.join(symlinkDirpath, './foo');
-var outputDirpathSymlink = path.join(outputDirpath, './foo');
-var content = testConstants.content;
+var pathElement = 'integration';
+var integrationInputBase = path.join(testConstants.inputBase, pathElement);
+var integrationOutputBase = path.join(testConstants.outputBase, pathElement);
+var inputIn = path.join(integrationOutputBase, 'in');
+var inputGlob = path.join(inputIn, '*.txt');
+var outputOut = path.join(integrationOutputBase, 'out');
+var outputDirpathSymlink = path.join(integrationOutputBase, 'foo');
+var outputSymlink = path.join(integrationOutputBase, pathElement);
+var outputDest = path.join(outputDirpathSymlink, pathElement);
 
-var clean = cleanup(base);
+var contents = 'Hello World!\n';
+var onlyWindows = isWindows ? it : xit;
+var skipWindows = isWindows ? xit : it;
 
 describe('integrations', function() {
+  beforeEach(function() {
+    if (!fs.existsSync(testConstants.outputBase)) {
+      fs.mkdirSync(testConstants.outputBase);
+    }
+    if (!fs.existsSync(integrationOutputBase)) {
+      fs.mkdirSync(integrationOutputBase);
+    }
+    if (!fs.existsSync(inputIn)) {
+      fs.mkdirSync(inputIn);
+    }
+    if (!fs.existsSync(outputOut)) {
+      fs.mkdirSync(outputOut);
+    }
+    if (!fs.existsSync(outputDirpathSymlink)) {
+      fs.mkdirSync(outputDirpathSymlink);
+    }
+  });
 
-  beforeEach(clean);
-  afterEach(clean);
+  afterEach(function(done) {
+    rimraf(integrationOutputBase, done);
+  });
 
   it('does not exhaust available file descriptors when streaming thousands of files', function(done) {
-    // This can be a very slow test on boxes with slow disk i/o
-    this.timeout(0);
-
     // Make a ton of files. Changed from hard links due to Windows failures
     var expectedCount = 6000;
 
-    fs.mkdirSync(base);
-    fs.mkdirSync(inputBase);
-
     for (var idx = 0; idx < expectedCount; idx++) {
-      var filepath = path.join(inputBase, './test' + idx + '.txt');
-      fs.writeFileSync(filepath, content);
+      var filepath = path.join(inputIn, 'test' + idx + '.txt');
+      fs.writeFileSync(filepath, contents);
     }
 
     pipe([
       vfs.src(inputGlob, { buffer: false }),
       count(expectedCount),
-      vfs.dest(outputBase),
+      vfs.dest(outputOut),
     ], done);
   });
 
-  it('(*nix) sources a directory, creates a symlink and copies it', function(done) {
-    if (isWindows) {
-      this.skip();
-      return;
-    }
-
+  it('sources a directory, creates a symlink and copies it', function(done) {
     function assert(files) {
       var symlinkResult = fs.readlinkSync(outputSymlink);
-      var destResult = fs.readlinkSync(outputDirpathSymlink);
+      var destResult = fs.readdirSync(outputDest);
 
-      expect(symlinkResult).toEqual(inputDirpath);
-      expect(destResult).toEqual(inputDirpath);
+      expect(symlinkResult).toBe(integrationInputBase);
+      expect(files[0].symlink).toBe(integrationInputBase);
+      expect(Array.isArray(destResult)).toBe(true);
+      expect(files[0].isDirectory()).toBe(true);
+      expect(path.basename(outputDest)).toBe(path.basename(integrationInputBase));
+    }
+
+    pipe([
+      vfs.src(integrationInputBase),
+      vfs.symlink(integrationOutputBase),
+      vfs.dest(outputDirpathSymlink),
+      concat(assert),
+    ], done);
+  });
+
+  skipWindows('(*nix) sources a symlink and copies it', function(done) {
+    fs.symlinkSync(integrationInputBase, outputSymlink);
+
+    function assert(files) {
+      var expected = integrationInputBase;
+      var destResult = fs.readlinkSync(outputDest);
+
+      expect(destResult).toBe(expected);
       expect(files[0].isSymbolic()).toBe(true);
-      expect(files[0].symlink).toEqual(inputDirpath);
+      expect(files[0].symlink).toBe(expected);
     }
 
     pipe([
-      vfs.src(inputDirpath),
-      vfs.symlink(symlinkDirpath),
-      vfs.dest(outputDirpath),
+      vfs.src(outputSymlink, { resolveSymlinks: false }),
+      vfs.dest(outputDirpathSymlink),
       concat(assert),
     ], done);
   });
 
-  it('(windows) sources a directory, creates a junction and copies it', function(done) {
-    if (!isWindows) {
-      this.skip();
-      return;
-    }
+  onlyWindows('(windows) sources a directory symlink and copies it', function(done) {
+    fs.symlinkSync(integrationInputBase, outputSymlink, 'dir');
 
     function assert(files) {
-      // Junctions add an ending separator
-      var expected = inputDirpath + path.sep;
-      var symlinkResult = fs.readlinkSync(outputSymlink);
-      var destResult = fs.readlinkSync(outputDirpathSymlink);
+      var expected = integrationInputBase;
+      var destResult = fs.readlinkSync(outputDest);
 
-      expect(symlinkResult).toEqual(expected);
-      expect(destResult).toEqual(expected);
+      expect(destResult).toBe(expected);
       expect(files[0].isSymbolic()).toBe(true);
-      expect(files[0].symlink).toEqual(inputDirpath);
-    }
-
-    pipe([
-      vfs.src(inputDirpath),
-      vfs.symlink(symlinkDirpath),
-      vfs.dest(outputDirpath),
-      concat(assert),
-    ], done);
-  });
-
-  it('(*nix) sources a symlink and copies it', function(done) {
-    if (isWindows) {
-      this.skip();
-      return;
-    }
-
-    fs.mkdirSync(base);
-    fs.mkdirSync(symlinkDirpath);
-    fs.symlinkSync(inputDirpath, outputSymlink);
-
-    function assert(files) {
-      var destResult = fs.readlinkSync(outputDirpathSymlink);
-
-      expect(destResult).toEqual(inputDirpath);
-      expect(files[0].isSymbolic()).toEqual(true);
-      expect(files[0].symlink).toEqual(inputDirpath);
+      expect(files[0].symlink).toBe(expected);
     }
 
     pipe([
       vfs.src(outputSymlink, { resolveSymlinks: false }),
-      vfs.dest(outputDirpath),
-      concat(assert),
-    ], done);
-  });
-
-  it('(windows) sources a directory symlink and copies it', function(done) {
-    if (!isWindows) {
-      this.skip();
-      return;
-    }
-
-    fs.mkdirSync(base);
-    fs.mkdirSync(symlinkDirpath);
-    fs.symlinkSync(inputDirpath, outputSymlink, 'dir');
-
-    function assert(files) {
-      // 'dir' symlinks add an ending separator
-      var expected = inputDirpath + path.sep;
-      var destResult = fs.readlinkSync(outputDirpathSymlink);
-
-      expect(destResult).toEqual(expected);
-      expect(files[0].isSymbolic()).toEqual(true);
-      expect(files[0].symlink).toEqual(inputDirpath);
-    }
-
-    pipe([
-      vfs.src(outputSymlink, { resolveSymlinks: false }),
-      vfs.dest(outputDirpath),
-      concat(assert),
-    ], done);
-  });
-
-  it('(windows) sources a junction and copies it', function(done) {
-    if (!isWindows) {
-      this.skip();
-      return;
-    }
-
-    fs.mkdirSync(base);
-    fs.mkdirSync(symlinkDirpath);
-    fs.symlinkSync(inputDirpath, outputSymlink, 'junction');
-
-    function assert(files) {
-      // Junctions add an ending separator
-      var expected = inputDirpath + path.sep;
-      var destResult = fs.readlinkSync(outputDirpathSymlink);
-
-      expect(destResult).toEqual(expected);
-      expect(files[0].isSymbolic()).toEqual(true);
-      expect(files[0].symlink).toEqual(inputDirpath);
-    }
-
-    pipe([
-      vfs.src(outputSymlink, { resolveSymlinks: false }),
-      vfs.dest(outputDirpath),
+      vfs.dest(outputDirpathSymlink),
       concat(assert),
     ], done);
   });

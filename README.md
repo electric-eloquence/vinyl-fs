@@ -131,13 +131,6 @@ Any glob-related options are documented in [glob-stream] and [node-glob] and are
 Takes a folder path string or a function as the first argument and an options object as the second. If given a function, it will be called with each [vinyl] `File` object and must return a folder path.
 Returns a stream that accepts [vinyl] `File` objects, writes them to disk at the folder/cwd specified, and passes them downstream so you can keep piping these around.
 
-Once the file is written to disk, an attempt is made to determine if the `stat.mode`, `stat.mtime` and `stat.atime` of the [vinyl] `File` object differ from the file on the filesystem.
-If they differ and the running process owns the file, the corresponding filesystem metadata is updated.
-If they don't differ or the process doesn't own the file, the attempt is skipped silently.
-__This functionality is disabled on Windows operating systems or any other OS that doesn't support `process.getuid` or `process.geteuid` in node. This is due to Windows having very unexpected results through usage of `fs.fchmod` and `fs.futimes`.__
-
-__Note: The `fs.futimes()` method internally converts `stat.mtime` and `stat.atime` timestamps to seconds; this division by `1000` may cause some loss of precision in 32-bit Node.js.__
-
 If the file has a `symlink` attribute specifying a target path, then a symlink will be created.
 
 __Note: The file will be modified after being written to this stream.__
@@ -162,6 +155,8 @@ Default: `process.cwd()`
 
 The mode the files should be created with. This option is only resolved if the [vinyl] `File` is not symbolic.
 
+__Note: This functionality is disabled on Windows operating systems due to Windows having very unexpected results through usage of `fs.fchmod`.__
+
 Type: `Number`
 
 Default: The `mode` of the input file (`file.stat.mode`) if any, or the process mode if the input file has no `mode` property.
@@ -169,6 +164,8 @@ Default: The `mode` of the input file (`file.stat.mode`) if any, or the process 
 ##### `options.dirMode`
 
 The mode directories should be created with.
+
+__Note: This functionality is disabled on Windows operating systems due to Windows having very unexpected results through usage of `fs.fchmod`.__
 
 Type: `Number`
 

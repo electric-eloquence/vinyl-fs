@@ -7,7 +7,9 @@ var to = miss.to;
 var from = miss.from;
 var through = miss.through;
 
-function string(length) {
+function string(length_) {
+  var length = length_;
+
   return from(function(size, next) {
     if (length <= 0) {
       next(null, null);
@@ -36,7 +38,7 @@ function rename(filepath) {
 
 function includes(obj) {
   return through.obj(function(file, enc, cb) {
-    expect(file).toInclude(obj);
+    expect(file).toMatchObject(obj);
     cb(null, file);
   });
 }
@@ -47,7 +49,7 @@ function count(value) {
     count++;
     cb(null, file);
   }, function(cb) {
-    expect(count).toEqual(value);
+    expect(count).toBe(value);
     cb();
   });
 }
@@ -61,7 +63,7 @@ function slowCount(value) {
       cb(null, file);
     }, 250);
   }, function(cb) {
-    expect(count).toEqual(value);
+    expect(count).toBe(value);
     cb();
   });
 }

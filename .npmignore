@@ -1,0 +1,6 @@
+*.log
+.*
+appveyor.yml
+coverage/
+jest.config.js
+test/

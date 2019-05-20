@@ -1,16 +1,19 @@
 {
   "name": "vinyl-fs",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Vinyl adapter for the file system.",
   "author": "Gulp Team <team@gulpjs.com> (http://gulpjs.com/)",
   "contributors": [
     "Eric Schoffstall <yo@contra.io>",
     "Blaine Bublitz <blaine.bublitz@gmail.com>"
   ],
-  "repository": "gulpjs/vinyl-fs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electric-eloquence/vinyl-fs.git"
+  },
   "license": "MIT",
   "engines": {
-    "node": ">= 0.10"
+    "node": ">= 8.16.0"
   },
   "main": "index.js",
   "files": [
@@ -19,11 +22,10 @@
     "lib"
   ],
   "scripts": {
-    "lint": "eslint . && jscs index.js lib/ test/",
+    "coverage": "cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "mocha --async-only",
-    "cover": "istanbul cover _mocha --report lcovonly",
-    "coveralls": "npm run cover && istanbul-coveralls"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "fs-mkdirp-stream": "^1.0.0",
@@ -40,21 +42,16 @@
     "resolve-options": "^1.1.0",
     "through2": "^2.0.0",
     "to-through": "^2.0.0",
-    "value-or-function": "^3.0.0",
     "vinyl": "^2.0.0",
     "vinyl-sourcemap": "^1.1.0"
   },
   "devDependencies": {
-    "eslint": "^1.10.3",
-    "eslint-config-gulp": "^2.0.0",
-    "expect": "^1.19.0",
-    "istanbul": "^0.4.3",
-    "istanbul-coveralls": "^1.0.3",
-    "jscs": "^2.4.0",
-    "jscs-preset-gulp": "^1.0.0",
-    "mississippi": "^1.2.0",
-    "mocha": "^3.5.0",
-    "rimraf": "^2.6.1"
+    "coveralls": "3.x",
+    "eslint": "5.x",
+    "expect": "24.x",
+    "jest": "24.x",
+    "mississippi": "^4.0.0",
+    "rimraf": "^2.6.3"
   },
   "keywords": [
     "gulp",

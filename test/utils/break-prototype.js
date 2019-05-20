@@ -13,11 +13,7 @@ function breakPrototype(file) {
   });
 
   // Assign the broken prototype to our instance
-  if (typeof Object.setPrototypeOf === 'function') {
-    Object.setPrototypeOf(file, oldProto);
-  } else {
-    file.__proto__ = oldProto;
-  }
+  Object.setPrototypeOf(file, oldProto);
 }
 
 module.exports = breakPrototype;
