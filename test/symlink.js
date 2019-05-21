@@ -533,7 +533,7 @@ describe('symlink stream', function() {
 
     function assert(err) {
       expect(err.code).toBe('EACCES');
-      fs.chmod(symlinkOutputBase, 0o755, done);
+      fs.chmod(symlinkOutputBase, parseInt(755, 8), done);
     }
 
     pipe([
