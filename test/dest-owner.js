@@ -31,9 +31,9 @@ describe('.dest() with custom owner', function() {
     mkdirp(destOwnerOutputBase, done);
   });
 
-  afterEach(function(done) {
+  afterEach(function() {
     jest.restoreAllMocks();
-    rimraf(destOwnerOutputBase, done);
+    rimraf.sync(destOwnerOutputBase);
   });
 
   skipWindows('calls fchown when the uid and/or gid are provided on the vinyl stat', function(done) {

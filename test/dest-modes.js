@@ -40,9 +40,9 @@ describe('.dest() with custom modes', function() {
     mkdirp(destModesOutputBase, done);
   });
 
-  afterEach(function(done) {
+  afterEach(function() {
     jest.restoreAllMocks();
-    rimraf(destModesOutputBase, done);
+    rimraf.sync(destModesOutputBase);
   });
 
   // Changing the mode of a file is not supported by node.js in Windows.

@@ -62,9 +62,9 @@ describe('.dest()', function() {
     mkdirp(destOutputBase, done);
   });
 
-  afterEach(function(done) {
+  afterEach(function() {
     jest.restoreAllMocks();
-    rimraf(destOutputBase, done);
+    rimraf.sync(destOutputBase);
   });
 
   it('throws on no folder argument', function(done) {

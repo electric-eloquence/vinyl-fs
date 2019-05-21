@@ -41,10 +41,9 @@ describe('.dest() with symlinks', function() {
     mkdirp(destSymlinksOutputBase, done);
   });
 
-  afterEach(function(done) {
-    rimraf(destSymlinksOutputBase, function() {
-      rimraf(neOutputBase, done);
-    });
+  afterEach(function() {
+    rimraf.sync(destSymlinksOutputBase);
+    rimraf.sync(neOutputBase);
   });
 
   it('creates symlinks when `file.isSymbolic()` is true', function(done) {
@@ -287,7 +286,6 @@ describe('.dest() with symlinks', function() {
     file.symlink = destSymlinksInputDirpath;
 
     function useJunctions(f) {
-      expect(f).toExist();
       expect(f).toBe(file);
       return false;
     }
@@ -457,7 +455,7 @@ describe('.dest() with symlinks', function() {
       var outputLink = fs.readlinkSync(destSymlinksOutputPath);
 
       expect(files.length).toBe(1);
-      expect(outputLink).toBe(path.normalize('../fixtures/test.txt'));
+      expect(outputLink).toBe(path.normalize('../../fixtures/dest-symlinks/dest-symlinks.test'));
     }
 
     pipe([
@@ -487,7 +485,7 @@ describe('.dest() with symlinks', function() {
       var outputLink = fs.readlinkSync(destSymlinksOutputDirpath);
 
       expect(files.length).toBe(1);
-      expect(files).toInclude(file);
+      expect(files).toContain(file);
       expect(files[0].base).toBe(destSymlinksOutputBase);
       expect(files[0].path).toBe(destSymlinksOutputDirpath);
       expect(outputLink).toBe(path.normalize('../../fixtures/dest-symlinks/foo'));

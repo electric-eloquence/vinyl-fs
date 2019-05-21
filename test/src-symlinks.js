@@ -10,6 +10,7 @@ var rimraf = require('rimraf');
 var vfs = require('../');
 
 var testConstants = require('./utils/test-constants');
+var isWindows = require('./utils/is-windows');
 
 var concat = miss.concat;
 var pipe = miss.pipe;
@@ -25,6 +26,8 @@ var srcSymlinksMultiDirpathSecond = path.join(srcSymlinksOutputBase, 'test-multi
 var srcSymlinksNested = path.join(srcSymlinksOutputBase, 'test-multi-layer-symlink');
 var srcSymlinksNestedTarget = path.join(srcSymlinksInputBase, 'foo', 'bar.txt');
 
+var skipWindows = isWindows ? xit : it;
+
 describe('.src() with symlinks', function() {
   beforeEach(function() {
     if (!fs.existsSync(testConstants.outputBase)) {
@@ -33,15 +36,25 @@ describe('.src() with symlinks', function() {
     if (!fs.existsSync(srcSymlinksOutputBase)) {
       fs.mkdirSync(srcSymlinksOutputBase);
     }
-    fs.symlinkSync(srcSymlinksInputBase, srcSymlinksDirpath);
-    fs.symlinkSync(srcSymlinksInputPath, srcSymlinksOutputPath);
-    fs.symlinkSync(srcSymlinksDirpath, srcSymlinksMultiDirpath);
-    fs.symlinkSync(srcSymlinksMultiDirpath, srcSymlinksMultiDirpathSecond);
-    fs.symlinkSync(srcSymlinksNestedTarget, srcSymlinksNested);
+    if (!fs.existsSync(srcSymlinksDirpath)) {
+      fs.symlinkSync(srcSymlinksInputBase, srcSymlinksDirpath);
+    }
+    if (!fs.existsSync(srcSymlinksOutputPath)) {
+      fs.symlinkSync(srcSymlinksInputPath, srcSymlinksOutputPath);
+    }
+    if (!fs.existsSync(srcSymlinksMultiDirpath)) {
+      fs.symlinkSync(srcSymlinksDirpath, srcSymlinksMultiDirpath);
+    }
+    if (!fs.existsSync(srcSymlinksMultiDirpathSecond)) {
+      fs.symlinkSync(srcSymlinksMultiDirpath, srcSymlinksMultiDirpathSecond);
+    }
+    if (!fs.existsSync(srcSymlinksNested)) {
+      fs.symlinkSync(srcSymlinksNestedTarget, srcSymlinksNested);
+    }
   });
 
-  afterEach(function(done) {
-    rimraf(srcSymlinksOutputBase, done);
+  afterEach(function() {
+    rimraf.sync(srcSymlinksOutputBase);
   });
 
   it('resolves symlinks correctly', function(done) {
@@ -62,7 +75,7 @@ describe('.src() with symlinks', function() {
     ], done);
   });
 
-  it('resolves directory symlinks correctly', function(done) {
+  skipWindows('resolves directory symlinks correctly', function(done) {
     function assert(files) {
       expect(files.length).toBe(1);
       // The path should be the symlink itself
@@ -80,7 +93,7 @@ describe('.src() with symlinks', function() {
     ], done);
   });
 
-  it('resolves nested symlinks to directories correctly', function(done) {
+  skipWindows('resolves nested symlinks to directories correctly', function(done) {
     function assert(files) {
       expect(files.length).toBe(1);
       // The path should be the symlink itself

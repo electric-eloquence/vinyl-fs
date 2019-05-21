@@ -57,9 +57,9 @@ function cleanBeforeEach(done) {
   mkdirp(fileOperationsOutputBase, done);
 }
 
-function cleanAfterEach(done) {
+function cleanAfterEach() {
   jest.restoreAllMocks();
-  rimraf(fileOperationsOutputBase, done);
+  rimraf.sync(fileOperationsOutputBase);
 }
 
 describe('isOwner', function() {
@@ -886,12 +886,12 @@ describe('reflectLinkStat', function() {
 describe('updateMetadata', function() {
   beforeEach(cleanBeforeEach);
 
-  afterEach(function(done) {
+  afterEach(function() {
     if (process.geteuid === noop) {
       delete process.geteuid;
     }
 
-    cleanAfterEach(done);
+    cleanAfterEach();
   });
 
   // Changing the time of a directory errors in Windows.

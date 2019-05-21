@@ -51,12 +51,13 @@ describe('integrations', function() {
     }
   });
 
-  afterEach(function(done) {
-    rimraf(integrationOutputBase, done);
+  afterEach(function() {
+    rimraf.sync(integrationOutputBase);
   });
 
   it('does not exhaust available file descriptors when streaming thousands of files', function(done) {
     // Make a ton of files. Changed from hard links due to Windows failures
+    jest.setTimeout(20000);
     var expectedCount = 6000;
 
     for (var idx = 0; idx < expectedCount; idx++) {
@@ -71,7 +72,7 @@ describe('integrations', function() {
     ], done);
   });
 
-  it('sources a directory, creates a symlink and copies it', function(done) {
+  skipWindows('(*nix) sources a directory, creates a symlink and copies it', function(done) {
     function assert(files) {
       var symlinkResult = fs.readlinkSync(outputSymlink);
       var destResult = fs.readdirSync(outputDest);
@@ -80,6 +81,26 @@ describe('integrations', function() {
       expect(files[0].symlink).toBe(integrationInputBase);
       expect(Array.isArray(destResult)).toBe(true);
       expect(files[0].isDirectory()).toBe(true);
+      expect(path.basename(outputDest)).toBe(path.basename(integrationInputBase));
+    }
+
+    pipe([
+      vfs.src(integrationInputBase),
+      vfs.symlink(integrationOutputBase),
+      vfs.dest(outputDirpathSymlink),
+      concat(assert),
+    ], done);
+  });
+
+  onlyWindows('(windows) sources a directory, creates a symlink and copies it', function(done) {
+    function assert(files) {
+      var symlinkResult = fs.readlinkSync(outputSymlink);
+      var destResult = fs.readdirSync(outputDest);
+
+      expect(symlinkResult).toBe(integrationInputBase + '\\');
+      expect(files[0].symlink).toBe(integrationInputBase);
+      expect(Array.isArray(destResult)).toBe(true);
+      expect(files[0].isSymbolic()).toBe(true);
       expect(path.basename(outputDest)).toBe(path.basename(integrationInputBase));
     }
 
@@ -117,7 +138,7 @@ describe('integrations', function() {
       var expected = integrationInputBase;
       var destResult = fs.readlinkSync(outputDest);
 
-      expect(destResult).toBe(expected);
+      expect(destResult).toBe(expected + '\\');
       expect(files[0].isSymbolic()).toBe(true);
       expect(files[0].symlink).toBe(expected);
     }

@@ -44,8 +44,8 @@ describe('symlink stream', function() {
     mkdirp(symlinkOutputBase, done);
   });
 
-  afterEach(function(done) {
-    rimraf(symlinkOutputBase, done);
+  afterEach(function() {
+    rimraf.sync(symlinkOutputBase);
   });
 
   it('throws on no folder argument', function(done) {
@@ -465,7 +465,7 @@ describe('symlink stream', function() {
 
   onlyWindows('(windows) supports relativeSymlinks option when link is not for a directory', function(done) {
     var file = new File({
-      base: inputBase,
+      base: symlinkInputBase,
       path: symlinkInputPath,
       contents: null,
     });
@@ -477,7 +477,7 @@ describe('symlink stream', function() {
       expect(files).toContain(file);
       expect(files[0].base).toBe(symlinkOutputBase);
       expect(files[0].path).toBe(symlinkOutputLinkedFile);
-      expect(outputLink).toBe(path.normalize('../fixtures/test.txt'));
+      expect(outputLink).toBe(path.normalize('../../fixtures/symlink/symlink.test'));
     }
 
     pipe([
@@ -508,7 +508,7 @@ describe('symlink stream', function() {
       expect(files[0].base).toBe(symlinkOutputBase);
       expect(files[0].path).toBe(symlinkOutputLinkedDir);
       expect(files[0].symlink).toBe(outputLink);
-      expect(outputLink).toBe(path.normalize('../fixtures/symlink'));
+      expect(outputLink).toBe(path.normalize('../../fixtures/symlink'));
       expect(stats.isDirectory()).toBe(true);
       expect(lstats.isDirectory()).toBe(false);
     }
@@ -902,7 +902,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      // Pre-set this because it is set by symlink
+      // Pre-set this because it is set by vfs.symlink
       symlink: symlinkInputPath,
     });
 
