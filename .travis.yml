@@ -14,4 +14,4 @@ branches:
   - npm
   - lts
   # After releasing, bump to next anticpated version.
-  - lts@3.0.5
+  - lts@3.0.4

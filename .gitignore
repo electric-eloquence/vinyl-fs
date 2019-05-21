@@ -3,6 +3,7 @@
 *~
 .*.swp
 .DS_Store
+.coveralls.yml
 /coverage
 /test/out-fixtures/*
 node_modules
