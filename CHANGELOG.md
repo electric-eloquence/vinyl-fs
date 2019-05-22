@@ -4,3 +4,5 @@
 * No more programmatic assignment of accessed and modified times to destination 
   files. The accessed and modified times will henceforth reflect file system 
   operations.
+
+### 3.0.5
