@@ -30,8 +30,8 @@ branches:
   only:
     - dev
     - npm
-    - lts
+    - v3-lts
     # After releasing, bump to next anticpated version.
-    - lts@3.0.4
+    - v3-lts@3.0.4
 
 skip_tags: true

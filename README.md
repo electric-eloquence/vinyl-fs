@@ -1,14 +1,18 @@
-<p align="center">
-  <a href="http://gulpjs.com">
-    <img height="257" width="114" src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png">
-  </a>
-</p>
-
 # vinyl-fs
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![AppVeyor Build Status][appveyor-image]][appveyor-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Gitter chat][gitter-image]][gitter-url]
+> [Vinyl][vinyl] adapter for the file system.
 
-[Vinyl][vinyl] adapter for the file system.
+[![Known Vulnerabilities][snyk-image]][snyk-url]
+[![Mac/Linux Build Status][travis-image]][travis-url]
+[![Windows Build Status][appveyor-image]][appveyor-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+![Node Version][version-image]
+[![License][license-image]][license-url]
+
+### This package provides long-term support for `vinyl-fs` at major version 3.
+
+This in turn provides <a href="https://github.com/electric-eloquence/gulp#readme" target="_blank">
+long-term support for gulp at major version 3</a>.
 
 ## What is Vinyl?
 
@@ -18,11 +22,17 @@
 
 While Vinyl provides a clean way to describe a file, we now need a way to access these files. Each file source needs what we call a "Vinyl adapter". A Vinyl adapter simply exposes a `src(globs)` and a `dest(folder)` method. Each return a stream. The `src` stream produces Vinyl objects, and the `dest` stream consumes Vinyl objects. Vinyl adapters can expose extra methods that might be specific to their input/output medium, such as the `symlink` method `vinyl-fs` provides.
 
-## Usage
+## Install
+
+```shell
+npm install --save @electric-eloquence/vinyl-fs
+```
+
+## Use
 
 ```javascript
 var map = require('map-stream');
-var vfs = require('vinyl-fs');
+var vfs = require('@electric-eloquence/vinyl-fs');
 
 var log = function(file, cb) {
   console.log(file.path);
@@ -313,26 +323,32 @@ type of link and we default to using `'file'`, which may cause unexpected behavi
 if you are creating a "dangling" link to a directory. It is advised to avoid this
 scenario.
 
+## Acknowledgments
+
+This package is forked from 
+[the upstream source](https://github.com/gulpjs/vinyl-fs) with the same name. 
+This fork is purely derivative and does not add functionality. Credit and 
+gratitude are due for 
+[the contributors to the source](https://github.com/gulpjs/vinyl-fs/graphs/contributors). 
+
+[snyk-image]: https://snyk.io/test/github/electric-eloquence/vinyl-fs/v3-lts/badge.svg
+[snyk-url]: https://snyk.io/test/github/electric-eloquence/vinyl-fs/v3-lts
+
+[travis-image]: https://img.shields.io/travis/electric-eloquence/vinyl-fs.svg?label=mac%20%26%20linux
+[travis-url]: https://travis-ci.org/electric-eloquence/vinyl-fs
+
+[appveyor-image]: https://img.shields.io/appveyor/ci/e2tha-e/vinyl-fs.svg?label=windows
+[appveyor-url]: https://ci.appveyor.com/project/e2tha-e/vinyl-fs
+
+[coveralls-image]: https://coveralls.io/repos/github/electric-eloquence/vinyl-fs/badge.svg?branch=v3-lts
+[coveralls-url]: https://coveralls.io/github/electric-eloquence/vinyl-fs?branch=v3-lts
+
+[version-image]: https://img.shields.io/node/v/@electric-eloquence/vinyl-fs.svg
+
+[license-image]: https://img.shields.io/github/license/electric-eloquence/vinyl-fs.svg
+[license-url]: https://raw.githubusercontent.com/electric-eloquence/vinyl-fs/v3-lts/LICENSE
 
 [symbolic-caveats]: #symbolic-links-on-windows
 [glob-stream]: https://github.com/gulpjs/glob-stream
 [node-glob]: https://github.com/isaacs/node-glob
-[gaze]: https://github.com/shama/gaze
-[glob-watcher]: https://github.com/wearefractal/glob-watcher
 [vinyl]: https://github.com/wearefractal/vinyl
-
-[downloads-image]: http://img.shields.io/npm/dm/vinyl-fs.svg
-[npm-url]: https://www.npmjs.com/package/vinyl-fs
-[npm-image]: http://img.shields.io/npm/v/vinyl-fs.svg
-
-[travis-url]: https://travis-ci.org/gulpjs/vinyl-fs
-[travis-image]: http://img.shields.io/travis/gulpjs/vinyl-fs.svg?label=travis-ci
-
-[appveyor-url]: https://ci.appveyor.com/project/gulpjs/vinyl-fs
-[appveyor-image]: https://img.shields.io/appveyor/ci/gulpjs/vinyl-fs.svg?label=appveyor
-
-[coveralls-url]: https://coveralls.io/r/gulpjs/vinyl-fs
-[coveralls-image]: http://img.shields.io/coveralls/gulpjs/vinyl-fs/master.svg
-
-[gitter-url]: https://gitter.im/gulpjs/gulp
-[gitter-image]: https://badges.gitter.im/gulpjs/gulp.svg
