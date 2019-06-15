@@ -25,7 +25,7 @@ While Vinyl provides a clean way to describe a file, we now need a way to access
 ## Install
 
 ```shell
-npm install --save @electric-eloquence/vinyl-fs
+npm install @electric-eloquence/vinyl-fs
 ```
 
 ## Use
