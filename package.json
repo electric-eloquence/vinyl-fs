@@ -1,6 +1,6 @@
 {
   "name": "@electric-eloquence/vinyl-fs",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "Vinyl adapter for the file system.",
   "author": "Gulp Team <team@gulpjs.com> (http://gulpjs.com/)",
   "contributors": [
