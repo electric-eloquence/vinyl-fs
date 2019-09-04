@@ -801,7 +801,7 @@ describe('writeFile', function() {
     });
   });
 
-  it('does not error if options is falsey', function(done) {
+  it('does not error if options is falsy', function(done) {
     writeFile(fileOperationsOutputPath, Buffer.from(contents), null, function(err, fd) {
       expect(err).toBeNull();
       expect(typeof fd === 'number').toBe(true);
