@@ -4,7 +4,7 @@ var buffer = require('buffer');
 var path = require('path');
 
 var expect = require('expect');
-var fs = require('graceful-fs');
+var fs = require('fs');
 var File = require('vinyl');
 var miss = require('mississippi');
 var mkdirp = require('fs-mkdirp-stream/mkdirp');

@@ -3,7 +3,7 @@
 var path = require('path');
 
 var expect = require('expect');
-var fs = require('graceful-fs');
+var fs = require('fs');
 var miss = require('mississippi');
 var rimraf = require('rimraf');
 
