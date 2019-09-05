@@ -2,7 +2,7 @@
 
 ### 3.0.5
 * Replaced graceful-fs with fs
-* Very minor updates to readme, license, and continuous integration configs
+* Updates to readme, license, and continuous integration configs
 
 ### 3.0.4
 * No more programmatic assignment of accessed and modified times to destination 
