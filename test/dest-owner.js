@@ -36,32 +36,6 @@ describe('.dest() with custom owner', function() {
     rimraf.sync(destOwnerOutputBase);
   });
 
-  skipWindows('calls fchown when the uid and/or gid are provided on the vinyl stat', function(done) {
-    var fchownSpy = jest.spyOn(fs, 'fchown');
-
-    var file = new File({
-      base: destOwnerInputBase,
-      path: destOwnerInputPath,
-      contents: Buffer.from(contents),
-      stat: {
-        uid: 1001,
-        gid: 1001,
-      },
-    });
-
-    function assert() {
-      expect(fchownSpy).toHaveBeenCalled();
-      expect(fchownSpy.mock.calls[0][1]).toBe(1001);
-      expect(fchownSpy.mock.calls[0][2]).toBe(1001);
-    }
-
-    pipe([
-      from.obj([file]),
-      vfs.dest(destOwnerOutputBase),
-      concat(assert),
-    ], done);
-  });
-
   skipWindows('does not call fchown when the uid and gid provided on the vinyl stat are invalid', function(done) {
     var fchownSpy = jest.spyOn(fs, 'fchown');
 

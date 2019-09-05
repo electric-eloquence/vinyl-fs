@@ -917,15 +917,15 @@ describe('updateMetadata', function() {
   });
 
   skipWindows('updates the vinyl object with fs stats', function(done) {
+    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
+    var stats = fs.fstatSync(fd);
+
     var file = new File({
       base: outputBase,
       path: fileOperationsOutputPath,
       contents: null,
       stat: {},
     });
-
-    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
-    var stats = fs.fstatSync(fd);
 
     updateMetadata(fd, file, function() {
       Object.keys(file.stat).forEach(function(key) {
@@ -941,17 +941,17 @@ describe('updateMetadata', function() {
       process.geteuid = noop;
     }
 
+    jest.spyOn(process, 'geteuid').mockReturnValue(9002);
+    var fchmodSpy = jest.spyOn(fs, 'fchmod');
+
+    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
+
     var file = new File({
       base: outputBase,
       path: fileOperationsOutputPath,
       contents: null,
       stat: {},
     });
-
-    jest.spyOn(process, 'geteuid').mockReturnValue(9002);
-    var fchmodSpy = jest.spyOn(fs, 'fchmod');
-
-    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
 
     updateMetadata(fd, file, function() {
       expect(fchmodSpy).not.toHaveBeenCalled();
@@ -963,6 +963,10 @@ describe('updateMetadata', function() {
   skipWindows('updates the mode on fs and vinyl object if there is a diff', function(done) {
     var fchmodSpy = jest.spyOn(fs, 'fchmod');
 
+    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
+    var fileUid = fs.statSync(fileOperationsOutputPath).uid + 1;
+    var fileGid = fs.statSync(fileOperationsOutputPath).gid + 1;
+
     var mode = applyUmask('777');
 
     var file = new File({
@@ -971,10 +975,10 @@ describe('updateMetadata', function() {
       contents: null,
       stat: {
         mode: mode,
+        uid: fileUid,
+        gid: fileGid,
       },
     });
-
-    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
 
     updateMetadata(fd, file, function() {
       expect(fchmodSpy).toHaveBeenCalled();
@@ -988,6 +992,8 @@ describe('updateMetadata', function() {
   skipWindows('updates the sticky bit on mode on fs and vinyl object if there is a diff', function(done) {
     var fchmodSpy = jest.spyOn(fs, 'fchmod');
 
+    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
+
     var mode = applyUmask('1777');
 
     var file = new File({
@@ -999,8 +1005,6 @@ describe('updateMetadata', function() {
       },
     });
 
-    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
-
     updateMetadata(fd, file, function() {
       expect(fchmodSpy).toHaveBeenCalled();
       var stats = fs.fstatSync(fd);
@@ -1011,6 +1015,10 @@ describe('updateMetadata', function() {
   });
 
   skipWindows('forwards fchmod error and descriptor upon error', function(done) {
+    var fchmodSpy = jest.spyOn(fs, 'fchmod');
+
+    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
+
     var mode = applyUmask('777');
 
     var file = new File({
@@ -1021,10 +1029,6 @@ describe('updateMetadata', function() {
         mode: mode,
       },
     });
-
-    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
-
-    var fchmodSpy = jest.spyOn(fs, 'fchmod');
 
     updateMetadata(fd, file, function() {
       expect(fchmodSpy).toHaveBeenCalled();
@@ -1033,24 +1037,22 @@ describe('updateMetadata', function() {
     });
   });
 
-  skipWindows('updates the mode on fs and vinyl object if there is a diff', function(done) {
-    var fchmodSpy = jest.spyOn(fs, 'fchmod')
-      .mockImplementation(function(fd, mode, cb) {
-        return cb();
-      });
+  skipWindows('forwards fchown error and descriptor upon error', function(done) {
+    var fchmodSpy = jest.spyOn(fs, 'fchown');
 
-    var mode = applyUmask('777');
+    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
+    var fileUid = fs.statSync(fileOperationsOutputPath).uid + 1;
+    var fileGid = fs.statSync(fileOperationsOutputPath).gid + 1;
 
     var file = new File({
       base: outputBase,
       path: fileOperationsOutputPath,
       contents: null,
       stat: {
-        mode: mode,
+        uid: fileUid,
+        gid: fileGid,
       },
     });
-
-    var fd = fs.openSync(fileOperationsOutputPath, 'w+');
 
     updateMetadata(fd, file, function() {
       expect(fchmodSpy).toHaveBeenCalled();

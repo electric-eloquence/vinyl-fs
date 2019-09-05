@@ -880,59 +880,6 @@ describe('.dest()', function() {
     ], assert);
   });
 
-  it('errors if we cannot mkdirp', function(done) {
-    var mkdirSpy = jest.spyOn(fs, 'mkdir').mockImplementation(mockError);
-
-    var file = new File({
-      base: destInputBase,
-      path: destInputPath,
-      contents: null,
-    });
-
-    function assert(err) {
-      expect(err).toBeInstanceOf(Error);
-      expect(mkdirSpy).toHaveBeenCalled();
-      done();
-    }
-
-    pipe([
-      from.obj([file]),
-      vfs.dest(destOutputBase),
-    ], assert);
-  });
-
-  it('errors if vinyl object is a directory and we cannot mkdirp', function(done) {
-    var ogMkdir = fs.mkdir;
-
-    var mkdirSpy = jest.spyOn(fs, 'mkdir').mockImplementation(function() {
-      if (mkdirSpy.mock.calls.length > 1) {
-        mockError.apply(this, arguments);
-      } else {
-        ogMkdir.apply(this, arguments);
-      }
-    });
-
-    var file = new File({
-      base: destInputBase,
-      path: destInputDirpath,
-      contents: null,
-      stat: {
-        isDirectory: always(true),
-      },
-    });
-
-    function assert(err) {
-      expect(err).toBeInstanceOf(Error);
-      expect(mkdirSpy).toHaveBeenCalledTimes(2);
-      done();
-    }
-
-    pipe([
-      from.obj([file]),
-      vfs.dest(destOutputBase),
-    ], assert);
-  });
-
   it('does not error if vinyl object is a directory and we cannot open it', function(done) {
     var file = new File({
       base: destInputBase,

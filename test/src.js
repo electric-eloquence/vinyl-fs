@@ -165,6 +165,34 @@ describe('.src()', function() {
     ], done);
   });
 
+  it('does not remove BOM from streamed utf8-encoded files if removeBOM option is false', function(done) {
+    var expectedContent = fs.readFileSync(bomInputPath);
+
+    function assertContent(contents) {
+      expect(contents).toMatchObject(expectedContent);
+    }
+
+    function compareContents(file, enc, cb) {
+      pipe([
+        file.contents,
+        concat(assertContent),
+      ], function(err) {
+        cb(err, file);
+      });
+    }
+
+    function assert(files) {
+      expect(files.length).toBe(1);
+      expect(files[0].isStream()).toBe(true);
+    }
+
+    pipe([
+      vfs.src(bomInputPath, { buffer: false, removeBOM: false }),
+      through.obj(compareContents),
+      concat(assert),
+    ], done);
+  });
+
   // This goes for any non-UTF-8 encoding.
   // UTF-16-BE is enough to demonstrate this is done properly.
   it('does not remove anything that looks like a utf8-encoded BOM from utf16be-encoded files', function(done) {
@@ -181,7 +209,7 @@ describe('.src()', function() {
     ], done);
   });
 
-  it('does not remove anything that looks like a utf8-encoded BOM from utf16be-encoded files with streaming contents', function(done) {
+  it('does not remove anything that looks like a utf8-encoded BOM from streamed utf16be-encoded files', function(done) {
     var expectedContent = fs.readFileSync(beEncodedInputPath);
 
     function assertContent(contents) {
@@ -225,7 +253,7 @@ describe('.src()', function() {
     ], done);
   });
 
-  it('does not remove anything that looks like a utf8-encoded BOM from utf16le-encoded files with streaming contents', function(done) {
+  it('does not remove anything that looks like a utf8-encoded BOM from streamed utf16le-encoded files', function(done) {
     var expectedContent = fs.readFileSync(leEncodedInputPath);
 
     function assertContent(contents) {
@@ -434,6 +462,17 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(srcInputPath, { read: read }),
+      concat(assert),
+    ], done);
+  });
+
+  it('accepts the sourcemaps option', function(done) {
+    function assert(files) {
+      expect(files.length).toBe(1);
+    }
+
+    pipe([
+      vfs.src(srcInputPath, { sourcemaps: true }),
       concat(assert),
     ], done);
   });
