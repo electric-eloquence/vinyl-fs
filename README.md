@@ -334,10 +334,10 @@ gratitude are due for
 [snyk-image]: https://snyk.io/test/github/electric-eloquence/vinyl-fs/v3-lts/badge.svg
 [snyk-url]: https://snyk.io/test/github/electric-eloquence/vinyl-fs/v3-lts
 
-[travis-image]: https://img.shields.io/travis/electric-eloquence/vinyl-fs.svg?label=mac%20%26%20linux
+[travis-image]: https://img.shields.io/travis/electric-eloquence/vinyl-fs/v3-lts.svg?label=mac%20%26%20linux
 [travis-url]: https://travis-ci.org/electric-eloquence/vinyl-fs
 
-[appveyor-image]: https://img.shields.io/appveyor/ci/e2tha-e/vinyl-fs.svg?label=windows
+[appveyor-image]: https://img.shields.io/appveyor/ci/e2tha-e/vinyl-fs/v3-lts.svg?label=windows
 [appveyor-url]: https://ci.appveyor.com/project/e2tha-e/vinyl-fs
 
 [coveralls-image]: https://coveralls.io/repos/github/electric-eloquence/vinyl-fs/badge.svg?branch=v3-lts
