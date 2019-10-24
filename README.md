@@ -340,7 +340,7 @@ gratitude are due for
 [appveyor-image]: https://img.shields.io/appveyor/ci/e2tha-e/vinyl-fs/v3-lts.svg?label=windows
 [appveyor-url]: https://ci.appveyor.com/project/e2tha-e/vinyl-fs
 
-[coveralls-image]: https://coveralls.io/repos/github/electric-eloquence/vinyl-fs/badge.svg?branch=v3-lts
+[coveralls-image]: https://img.shields.io/coveralls/electric-eloquence/vinyl-fs/v3-lts.svg
 [coveralls-url]: https://coveralls.io/github/electric-eloquence/vinyl-fs?branch=v3-lts
 
 [node-version-image]: https://img.shields.io/node/v/@electric-eloquence/vinyl-fs.svg
