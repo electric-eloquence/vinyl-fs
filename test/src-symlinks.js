@@ -71,7 +71,7 @@ describe('.src() with symlinks', function() {
 
     pipe([
       vfs.src(srcSymlinksNested),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -89,7 +89,7 @@ describe('.src() with symlinks', function() {
 
     pipe([
       vfs.src(srcSymlinksDirpath),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -107,7 +107,7 @@ describe('.src() with symlinks', function() {
 
     pipe([
       vfs.src(srcSymlinksMultiDirpathSecond),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -122,7 +122,7 @@ describe('.src() with symlinks', function() {
 
     pipe([
       vfs.src(srcSymlinksOutputPath, { resolveSymlinks: false }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -137,7 +137,7 @@ describe('.src() with symlinks', function() {
 
     pipe([
       vfs.src(srcSymlinksDirpath, { resolveSymlinks: false }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -157,7 +157,7 @@ describe('.src() with symlinks', function() {
 
     pipe([
       vfs.src(srcSymlinksNested, { resolveSymlinks: resolveSymlinks }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -171,7 +171,7 @@ describe('.src() with symlinks', function() {
 
     pipe([
       vfs.src(srcSymlinksNested, { resolveSymlinks: read }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 });

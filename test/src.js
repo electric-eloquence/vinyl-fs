@@ -109,7 +109,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src('./fixtures/noexist.coffee'),
-      concat(),
+      concat()
     ], assert);
   });
 
@@ -118,7 +118,7 @@ describe('.src()', function() {
       base: inputBase,
       path: srcInputPath,
       contents: Buffer.from(contents),
-      stat: fs.statSync(srcInputPath),
+      stat: fs.statSync(srcInputPath)
     });
 
     var srcStream = vfs.src(srcInputPath);
@@ -132,7 +132,7 @@ describe('.src()', function() {
 
     pipe([
       srcStream,
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -147,7 +147,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(bomInputPath),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -161,7 +161,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(bomInputPath, { removeBOM: false }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -175,7 +175,7 @@ describe('.src()', function() {
     function compareContents(file, enc, cb) {
       pipe([
         file.contents,
-        concat(assertContent),
+        concat(assertContent)
       ], function(err) {
         cb(err, file);
       });
@@ -189,7 +189,7 @@ describe('.src()', function() {
     pipe([
       vfs.src(bomInputPath, { buffer: false, removeBOM: false }),
       through.obj(compareContents),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -205,7 +205,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(beEncodedInputPath),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -219,7 +219,7 @@ describe('.src()', function() {
     function compareContents(file, enc, cb) {
       pipe([
         file.contents,
-        concat(assertContent),
+        concat(assertContent)
       ], function(err) {
         cb(err, file);
       });
@@ -233,7 +233,7 @@ describe('.src()', function() {
     pipe([
       vfs.src(beEncodedInputPath, { buffer: false }),
       through.obj(compareContents),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -249,7 +249,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(leEncodedInputPath),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -263,7 +263,7 @@ describe('.src()', function() {
     function compareContents(file, enc, cb) {
       pipe([
         file.contents,
-        concat(assertContent),
+        concat(assertContent)
       ], function(err) {
         cb(err, file);
       });
@@ -277,7 +277,7 @@ describe('.src()', function() {
     pipe([
       vfs.src(leEncodedInputPath, { buffer: false }),
       through.obj(compareContents),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -288,7 +288,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src('./fixtures/src/*.txt', { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -301,7 +301,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src('./fixtures/src/*.txt', { cwd: cwd }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -316,7 +316,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(inputDirGlob),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -331,7 +331,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src('./fixtures/no*', { cwd: cwd }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -345,7 +345,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(srcInputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -359,7 +359,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(srcInputPath, { read: false }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -373,7 +373,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(srcInputPath, { since: lastUpdateDate }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -386,7 +386,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(srcInputPath, { since: lastUpdateDate }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -400,7 +400,7 @@ describe('.src()', function() {
     function compareContents(file, enc, cb) {
       pipe([
         file.contents,
-        concat(assertContent),
+        concat(assertContent)
       ], function(err) {
         cb(err, file);
       });
@@ -415,7 +415,7 @@ describe('.src()', function() {
     pipe([
       vfs.src(srcInputPath, { buffer: false }),
       through.obj(compareContents),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -424,7 +424,7 @@ describe('.src()', function() {
       base: inputBase,
       path: srcInputPath,
       contents: fs.readFileSync(srcInputPath),
-      stat: fs.statSync(srcInputPath),
+      stat: fs.statSync(srcInputPath)
     });
 
     function assert(files) {
@@ -435,7 +435,7 @@ describe('.src()', function() {
     pipe([
       from.obj([file]),
       vfs.src(srcInputPath),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -447,7 +447,7 @@ describe('.src()', function() {
     pipe([
       vfs.src(srcInputPath),
       vfs.src(srcInputPath),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -462,7 +462,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(srcInputPath, { read: read }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -473,7 +473,7 @@ describe('.src()', function() {
 
     pipe([
       vfs.src(srcInputPath, { sourcemaps: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 });

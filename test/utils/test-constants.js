@@ -22,5 +22,5 @@ module.exports = {
   neInputBase: neInputBase,
   neInputPath: neInputPath,
   neOutputBase: neOutputBase,
-  neOutputPath: neOutputPath,
+  neOutputPath: neOutputPath
 };

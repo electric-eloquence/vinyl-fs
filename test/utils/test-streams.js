@@ -73,5 +73,5 @@ module.exports = {
   rename: rename,
   includes: includes,
   count: count,
-  slowCount: slowCount,
+  slowCount: slowCount
 };

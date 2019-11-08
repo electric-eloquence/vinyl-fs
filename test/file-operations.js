@@ -64,11 +64,11 @@ function cleanAfterEach() {
 
 describe('isOwner', function() {
   var ownerStat = {
-    uid: 9001,
+    uid: 9001
   };
 
   var nonOwnerStat = {
-    uid: 9002,
+    uid: 9002
   };
 
   var getuidSpy;
@@ -182,7 +182,7 @@ describe('getFlags', function() {
   it('returns wx if overwrite is false and append is false', function(done) {
     var result = getFlags({
       overwrite: false,
-      append: false,
+      append: false
     });
 
     expect(result).toBe('wx');
@@ -193,7 +193,7 @@ describe('getFlags', function() {
   it('returns w if overwrite is true and append is false', function(done) {
     var result = getFlags({
       overwrite: true,
-      append: false,
+      append: false
     });
 
     expect(result).toBe('w');
@@ -204,7 +204,7 @@ describe('getFlags', function() {
   it('returns ax if overwrite is false and append is true', function(done) {
     var result = getFlags({
       overwrite: false,
-      append: true,
+      append: true
     });
 
     expect(result).toBe('ax');
@@ -215,7 +215,7 @@ describe('getFlags', function() {
   it('returns a if overwrite is true and append is true', function(done) {
     var result = getFlags({
       overwrite: true,
-      append: true,
+      append: true
     });
 
     expect(result).toBe('a');
@@ -375,7 +375,7 @@ describe('getOwnerDiff', function() {
   it('returns undefined if vinyl uid & gid are invalid', function(done) {
     var fsStat = {
       uid: 1000,
-      gid: 1000,
+      gid: 1000
     };
     var vfsStat = {};
 
@@ -389,11 +389,11 @@ describe('getOwnerDiff', function() {
   it('returns undefined if vinyl uid & gid are both equal to counterparts', function(done) {
     var fsStat = {
       uid: 1000,
-      gid: 1000,
+      gid: 1000
     };
     var vfsStat = {
       uid: 1000,
-      gid: 1000,
+      gid: 1000
     };
 
     var result = getOwnerDiff(fsStat, vfsStat);
@@ -406,15 +406,15 @@ describe('getOwnerDiff', function() {
   it('returns a diff object if uid or gid do not match', function(done) {
     var fsStat = {
       uid: 1000,
-      gid: 1000,
+      gid: 1000
     };
     var vfsStat0 = {
       uid: 1001,
-      gid: 1000,
+      gid: 1000
     };
     var expected0 = {
       uid: 1001,
-      gid: 1000,
+      gid: 1000
     };
 
     var result0 = getOwnerDiff(fsStat, vfsStat0);
@@ -423,11 +423,11 @@ describe('getOwnerDiff', function() {
 
     var vfsStat1 = {
       uid: 1000,
-      gid: 1001,
+      gid: 1001
     };
     var expected1 = {
       uid: 1000,
-      gid: 1001,
+      gid: 1001
     };
 
     var result1 = getOwnerDiff(fsStat, vfsStat1);
@@ -440,14 +440,14 @@ describe('getOwnerDiff', function() {
   it('returns the fs uid if the vinyl uid is invalid', function(done) {
     var fsStat = {
       uid: 1000,
-      gid: 1000,
+      gid: 1000
     };
     var vfsStat0 = {
-      gid: 1001,
+      gid: 1001
     };
     var expected = {
       uid: 1000,
-      gid: 1001,
+      gid: 1001
     };
 
     var result0 = getOwnerDiff(fsStat, vfsStat0);
@@ -456,7 +456,7 @@ describe('getOwnerDiff', function() {
 
     var vfsStat1 = {
       uid: -1,
-      gid: 1001,
+      gid: 1001
     };
 
     var result1 = getOwnerDiff(fsStat, vfsStat1);
@@ -469,14 +469,14 @@ describe('getOwnerDiff', function() {
   it('returns the fs gid if the vinyl gid is invalid', function(done) {
     var fsStat = {
       uid: 1000,
-      gid: 1000,
+      gid: 1000
     };
     var vfsStat0 = {
-      uid: 1001,
+      uid: 1001
     };
     var expected = {
       uid: 1001,
-      gid: 1000,
+      gid: 1000
     };
 
     var result0 = getOwnerDiff(fsStat, vfsStat0);
@@ -485,7 +485,7 @@ describe('getOwnerDiff', function() {
 
     var vfsStat1 = {
       uid: 1001,
-      gid: -1,
+      gid: -1
     };
 
     var result1 = getOwnerDiff(fsStat, vfsStat1);
@@ -497,10 +497,10 @@ describe('getOwnerDiff', function() {
 
   it('returns undefined if fs and vinyl uid are invalid', function(done) {
     var fsStat0 = {
-      gid: 1000,
+      gid: 1000
     };
     var vfsStat0 = {
-      gid: 1001,
+      gid: 1001
     };
 
     var result0 = getOwnerDiff(fsStat0, vfsStat0);
@@ -509,11 +509,11 @@ describe('getOwnerDiff', function() {
 
     var fsStat1 = {
       uid: -1,
-      gid: 1000,
+      gid: 1000
     };
     var vfsStat1 = {
       uid: -1,
-      gid: 1001,
+      gid: 1001
     };
 
     var result1 = getOwnerDiff(fsStat1, vfsStat1);
@@ -525,10 +525,10 @@ describe('getOwnerDiff', function() {
 
   it('returns undefined if fs and vinyl gid are invalid', function(done) {
     var fsStat0 = {
-      uid: 1000,
+      uid: 1000
     };
     var vfsStat0 = {
-      uid: 1001,
+      uid: 1001
     };
 
     var result0 = getOwnerDiff(fsStat0, vfsStat0);
@@ -537,11 +537,11 @@ describe('getOwnerDiff', function() {
 
     var fsStat1 = {
       uid: 1000,
-      gid: -1,
+      gid: -1
     };
     var vfsStat1 = {
       uid: 1001,
-      gid: -1,
+      gid: -1
     };
 
     var result1 = getOwnerDiff(fsStat1, vfsStat1);
@@ -660,7 +660,7 @@ describe('writeFile', function() {
   skipWindows('accepts a different mode in options', function(done) {
     var expected = applyUmask('777');
     var options = {
-      mode: expected,
+      mode: expected
     };
 
     writeFile(fileOperationsOutputPath, Buffer.from(contents), options, function(err, fd) {
@@ -697,7 +697,7 @@ describe('writeFile', function() {
     var length = contents.length;
     var options = {
       // Read and write flag.
-      flags: 'w+',
+      flags: 'w+'
     };
 
     writeFile(fileOperationsOutputPath, Buffer.from(contents), options, function(err, fd) {
@@ -723,7 +723,7 @@ describe('writeFile', function() {
     var expected = initial + toWrite;
 
     var options = {
-      flags: 'a',
+      flags: 'a'
     };
 
     writeFile(fileOperationsOutputPath, Buffer.from(toWrite), options, function(err, fd) {
@@ -755,7 +755,7 @@ describe('writeFile', function() {
 
   it('passes a file descriptor if write call errors', function(done) {
     var options = {
-      flags: 'r',
+      flags: 'r'
     };
 
     writeFile(fileOperationsInputPath, Buffer.from(contents), options, function(err, fd) {
@@ -904,7 +904,7 @@ describe('updateMetadata', function() {
       base: outputBase,
       path: fileOperationsOutputPath,
       contents: null,
-      stat: {},
+      stat: {}
     });
 
     updateMetadata(fd, file, function(err) {
@@ -924,7 +924,7 @@ describe('updateMetadata', function() {
       base: outputBase,
       path: fileOperationsOutputPath,
       contents: null,
-      stat: {},
+      stat: {}
     });
 
     updateMetadata(fd, file, function() {
@@ -950,7 +950,7 @@ describe('updateMetadata', function() {
       base: outputBase,
       path: fileOperationsOutputPath,
       contents: null,
-      stat: {},
+      stat: {}
     });
 
     updateMetadata(fd, file, function() {
@@ -976,8 +976,8 @@ describe('updateMetadata', function() {
       stat: {
         mode: mode,
         uid: fileUid,
-        gid: fileGid,
-      },
+        gid: fileGid
+      }
     });
 
     updateMetadata(fd, file, function() {
@@ -1001,8 +1001,8 @@ describe('updateMetadata', function() {
       path: fileOperationsOutputPath,
       contents: null,
       stat: {
-        mode: mode,
-      },
+        mode: mode
+      }
     });
 
     updateMetadata(fd, file, function() {
@@ -1026,8 +1026,8 @@ describe('updateMetadata', function() {
       path: fileOperationsOutputPath,
       contents: null,
       stat: {
-        mode: mode,
-      },
+        mode: mode
+      }
     });
 
     updateMetadata(fd, file, function() {
@@ -1050,8 +1050,8 @@ describe('updateMetadata', function() {
       contents: null,
       stat: {
         uid: fileUid,
-        gid: fileGid,
-      },
+        gid: fileGid
+      }
     });
 
     updateMetadata(fd, file, function() {
@@ -1076,7 +1076,7 @@ describe('createWriteStream', function() {
 
     pipe([
       from([contents]),
-      createWriteStream(fileOperationsOutputPath),
+      createWriteStream(fileOperationsOutputPath)
     ], assert);
   });
 
@@ -1092,7 +1092,7 @@ describe('createWriteStream', function() {
 
     pipe([
       string(size),
-      createWriteStream(fileOperationsOutputPath),
+      createWriteStream(fileOperationsOutputPath)
     ], assert);
   });
 
@@ -1109,7 +1109,7 @@ describe('createWriteStream', function() {
     pipe([
       from([contents]),
       // Replaces from the beginning of the file
-      createWriteStream(fileOperationsOutputPath, { flags: 'r+' }),
+      createWriteStream(fileOperationsOutputPath, { flags: 'r+' })
     ], assert);
   });
 
@@ -1125,7 +1125,7 @@ describe('createWriteStream', function() {
     pipe([
       from([contents]),
       // Appends to the end of the file
-      createWriteStream(fileOperationsOutputPath, { flags: 'a' }),
+      createWriteStream(fileOperationsOutputPath, { flags: 'a' })
     ], assert);
   });
 
@@ -1139,7 +1139,7 @@ describe('createWriteStream', function() {
 
     pipe([
       from([contents]),
-      createWriteStream(fileOperationsOutputPath, { mode: mode }),
+      createWriteStream(fileOperationsOutputPath, { mode: mode })
     ], assert);
   });
 
@@ -1153,7 +1153,7 @@ describe('createWriteStream', function() {
 
     pipe([
       from([contents]),
-      createWriteStream(fileOperationsOutputPath),
+      createWriteStream(fileOperationsOutputPath)
     ], assert);
   });
 
@@ -1172,7 +1172,7 @@ describe('createWriteStream', function() {
 
     pipe([
       from([contents]),
-      outStream,
+      outStream
     ], assert);
   });
 
@@ -1191,7 +1191,7 @@ describe('createWriteStream', function() {
 
     pipe([
       from([contents]),
-      outStream,
+      outStream
     ], assert);
   });
 
@@ -1211,7 +1211,7 @@ describe('createWriteStream', function() {
 
     pipe([
       from([contents]),
-      outStream,
+      outStream
     ], assert);
   });
 
@@ -1235,7 +1235,7 @@ describe('createWriteStream', function() {
 
     pipe([
       from([contents]),
-      outStream,
+      outStream
     ], assert);
   });
 
@@ -1251,7 +1251,7 @@ describe('createWriteStream', function() {
 
     pipe([
       from([contents]),
-      createWriteStream(badOutputPath),
+      createWriteStream(badOutputPath)
     ], assert);
   });
 
@@ -1268,7 +1268,7 @@ describe('createWriteStream', function() {
 
     pipe([
       from([contents]),
-      createWriteStream(fileOperationsOutputPath, { flags: 'r' }),
+      createWriteStream(fileOperationsOutputPath, { flags: 'r' })
     ], assert);
   });
 });

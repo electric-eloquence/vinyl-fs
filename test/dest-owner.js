@@ -45,8 +45,8 @@ describe('.dest() with custom owner', function() {
       contents: Buffer.from(contents),
       stat: {
         uid: -1,
-        gid: -1,
-      },
+        gid: -1
+      }
     });
 
     function assert() {
@@ -56,7 +56,7 @@ describe('.dest() with custom owner', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOwnerOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 });

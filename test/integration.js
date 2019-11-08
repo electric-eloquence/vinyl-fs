@@ -68,7 +68,7 @@ describe('integrations', function() {
     pipe([
       vfs.src(inputGlob, { buffer: false }),
       count(expectedCount),
-      vfs.dest(outputOut),
+      vfs.dest(outputOut)
     ], done);
   });
 
@@ -88,7 +88,7 @@ describe('integrations', function() {
       vfs.src(integrationInputBase),
       vfs.symlink(integrationOutputBase),
       vfs.dest(outputDirpathSymlink),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -108,7 +108,7 @@ describe('integrations', function() {
       vfs.src(integrationInputBase),
       vfs.symlink(integrationOutputBase),
       vfs.dest(outputDirpathSymlink),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -127,7 +127,7 @@ describe('integrations', function() {
     pipe([
       vfs.src(outputSymlink, { resolveSymlinks: false }),
       vfs.dest(outputDirpathSymlink),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -146,7 +146,7 @@ describe('integrations', function() {
     pipe([
       vfs.src(outputSymlink, { resolveSymlinks: false }),
       vfs.dest(outputDirpathSymlink),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 });

@@ -70,7 +70,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -82,7 +82,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(outputRelative, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -90,7 +90,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -102,7 +102,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -112,7 +112,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -130,7 +130,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(outputRelative, { cwd: cwd }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -140,7 +140,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function outputFn(f) {
@@ -163,7 +163,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(outputFn, { cwd: cwd }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -171,7 +171,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert(files) {
@@ -189,7 +189,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -197,7 +197,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -215,7 +215,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -223,7 +223,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: from([contents]),
+      contents: from([contents])
     });
 
     function assert(files) {
@@ -241,7 +241,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -249,7 +249,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -260,7 +260,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -270,8 +270,8 @@ describe('symlink stream', function() {
       path: symlinkInputBase,
       contents: null,
       stat: {
-        isDirectory: always(true),
-      },
+        isDirectory: always(true)
+      }
     });
 
     function assert(files) {
@@ -292,7 +292,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -302,8 +302,8 @@ describe('symlink stream', function() {
       path: symlinkInputBase,
       contents: null,
       stat: {
-        isDirectory: always(true),
-      },
+        isDirectory: always(true)
+      }
     });
 
     function assert(files) {
@@ -325,7 +325,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -335,8 +335,8 @@ describe('symlink stream', function() {
       path: symlinkInputBase,
       contents: null,
       stat: {
-        isDirectory: always(true),
-      },
+        isDirectory: always(true)
+      }
     });
 
     function assert(files) {
@@ -357,7 +357,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { useJunctions: false }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -367,8 +367,8 @@ describe('symlink stream', function() {
       path: symlinkInputBase,
       contents: null,
       stat: {
-        isDirectory: always(true),
-      },
+        isDirectory: always(true)
+      }
     });
 
     function useJunctions(f) {
@@ -394,7 +394,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { useJunctions: useJunctions }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -404,8 +404,8 @@ describe('symlink stream', function() {
       path: symlinkInputBase,
       contents: null,
       stat: {
-        isDirectory: always(true),
-      },
+        isDirectory: always(true)
+      }
     });
 
     function assert(files) {
@@ -426,7 +426,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -436,8 +436,8 @@ describe('symlink stream', function() {
       path: symlinkInputBase,
       contents: null,
       stat: {
-        isDirectory: always(true),
-      },
+        isDirectory: always(true)
+      }
     });
 
     function assert(files) {
@@ -459,7 +459,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { useJunctions: true, relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -467,7 +467,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -484,7 +484,7 @@ describe('symlink stream', function() {
       from.obj([file]),
       // The useJunctions option is ignored when file is not a directory
       vfs.symlink(symlinkOutputBase, { useJunctions: true, relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -494,8 +494,8 @@ describe('symlink stream', function() {
       path: symlinkInputBase,
       contents: null,
       stat: {
-        isDirectory: always(true),
-      },
+        isDirectory: always(true)
+      }
     });
 
     function assert(files) {
@@ -516,7 +516,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { useJunctions: false, relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -526,7 +526,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     fs.chmodSync(symlinkOutputBase, 0);
@@ -538,7 +538,7 @@ describe('symlink stream', function() {
 
     pipe([
       from.obj([file]),
-      vfs.symlink(symlinkOutputBase),
+      vfs.symlink(symlinkOutputBase)
     ], assert);
   });
 
@@ -548,7 +548,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -564,7 +564,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { overwrite: false }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -574,7 +574,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -590,7 +590,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { overwrite: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -600,7 +600,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function overwrite(f) {
@@ -621,7 +621,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { overwrite: overwrite }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -631,7 +631,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     function overwrite(f) {
@@ -652,7 +652,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { overwrite: overwrite }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -664,12 +664,12 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     pipe([
       from.obj([file]),
-      symlinkStream,
+      symlinkStream
     ]);
   });
 
@@ -681,12 +681,12 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     pipe([
       from.obj([file]),
-      symlinkStream,
+      symlinkStream
     ]);
   });
 
@@ -701,7 +701,7 @@ describe('symlink stream', function() {
 
     pipe([
       from.obj([file]),
-      vfs.symlink(symlinkOutputBase),
+      vfs.symlink(symlinkOutputBase)
     ], assert);
   });
 
@@ -716,7 +716,7 @@ describe('symlink stream', function() {
 
     pipe([
       from([file]),
-      vfs.symlink(symlinkOutputBase),
+      vfs.symlink(symlinkOutputBase)
     ], assert);
   });
 
@@ -727,7 +727,7 @@ describe('symlink stream', function() {
       var file = new File({
         base: symlinkInputBase,
         path: symlinkInputPath,
-        contents: null,
+        contents: null
       });
       highwatermarkFiles.push(file);
     }
@@ -737,7 +737,7 @@ describe('symlink stream', function() {
       count(expectedCount),
       // Must be in the Writable position to test this
       // So concat-stream cannot be used
-      vfs.symlink(symlinkOutputBase),
+      vfs.symlink(symlinkOutputBase)
     ], done);
   });
 
@@ -750,7 +750,7 @@ describe('symlink stream', function() {
       var file = new File({
         base: symlinkInputBase,
         path: symlinkInputPath,
-        contents: null,
+        contents: null
       });
       highwatermarkFiles.push(file);
     }
@@ -759,7 +759,7 @@ describe('symlink stream', function() {
       from.obj(highwatermarkFiles),
       count(expectedCount),
       vfs.symlink(symlinkOutputBase),
-      slowCount(expectedCount),
+      slowCount(expectedCount)
     ], done);
   });
 
@@ -767,7 +767,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: inputBase,
       path: symlinkInputBase,
-      contents: null,
+      contents: null
     });
 
     var symlinkStream = vfs.symlink(symlinkOutputBase);
@@ -789,7 +789,7 @@ describe('symlink stream', function() {
 
     pipe([
       from.obj([file]),
-      symlinkStream,
+      symlinkStream
     ], assert);
   });
 
@@ -797,7 +797,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     var symlinkStream = vfs.symlink(symlinkOutputBase);
@@ -814,7 +814,7 @@ describe('symlink stream', function() {
 
     pipe([
       from.obj([file]),
-      symlinkStream,
+      symlinkStream
     ], assert);
   });
 
@@ -825,7 +825,7 @@ describe('symlink stream', function() {
       var file = new File({
         base: symlinkInputBase,
         path: symlinkInputPath,
-        contents: null,
+        contents: null
       });
       highwatermarkFiles.push(file);
     }
@@ -839,7 +839,7 @@ describe('symlink stream', function() {
       count(expectedCount),
       // Must be in the Writable position to test this
       // So concat-stream cannot be used
-      symlinkStream,
+      symlinkStream
     ], done);
 
     process.nextTick(function() {
@@ -854,7 +854,7 @@ describe('symlink stream', function() {
       var file = new File({
         base: symlinkInputBase,
         path: symlinkInputPath,
-        contents: null,
+        contents: null
       });
       highwatermarkFiles.push(file);
     }
@@ -868,7 +868,7 @@ describe('symlink stream', function() {
       count(expectedCount),
       // Must be in the Writable position to test this
       // So concat-stream cannot be used
-      symlinkStream,
+      symlinkStream
     ], done);
 
     process.nextTick(function() {
@@ -880,7 +880,7 @@ describe('symlink stream', function() {
     var file = new File({
       base: symlinkInputBase,
       path: symlinkInputPath,
-      contents: null,
+      contents: null
     });
 
     var mockFn = jest.fn();
@@ -894,7 +894,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase, { read: read }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -903,7 +903,7 @@ describe('symlink stream', function() {
       base: symlinkInputBase,
       path: symlinkInputPath,
       // Pre-set this because it is set by vfs.symlink
-      symlink: symlinkInputPath,
+      symlink: symlinkInputPath
     });
 
     breakPrototype(file);
@@ -916,7 +916,7 @@ describe('symlink stream', function() {
     pipe([
       from.obj([file]),
       vfs.symlink(symlinkOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 });

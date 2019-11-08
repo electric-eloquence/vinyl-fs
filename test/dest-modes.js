@@ -55,8 +55,8 @@ describe('.dest() with custom modes', function() {
       path: destModesInputPath,
       contents: Buffer.from(contents),
       stat: {
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert() {
@@ -66,7 +66,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destModesOutputBase, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -78,8 +78,8 @@ describe('.dest() with custom modes', function() {
       path: destModesInputPath,
       contents: from([contents]),
       stat: {
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert() {
@@ -89,7 +89,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destModesOutputBase, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -101,8 +101,8 @@ describe('.dest() with custom modes', function() {
       path: destModesInputPath,
       contents: from([contents]),
       stat: {
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert() {
@@ -112,7 +112,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destModesOutputBase, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -125,8 +125,8 @@ describe('.dest() with custom modes', function() {
       contents: null,
       stat: {
         isDirectory: always(true),
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert() {
@@ -136,7 +136,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destModesOutputBase, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -149,8 +149,8 @@ describe('.dest() with custom modes', function() {
       contents: null,
       stat: {
         isDirectory: always(true),
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert() {
@@ -160,7 +160,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destModesOutputBase, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -170,7 +170,7 @@ describe('.dest() with custom modes', function() {
     var file = new File({
       base: destModesInputBase,
       path: destModesInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert() {
@@ -180,7 +180,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destModesOutputBase, { cwd: __dirname, mode: expectedMode }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -193,8 +193,8 @@ describe('.dest() with custom modes', function() {
       path: destModesInputPath,
       contents: Buffer.from(contents),
       stat: {
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert() {
@@ -207,7 +207,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destModesOutputBase, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -220,16 +220,16 @@ describe('.dest() with custom modes', function() {
       path: destModesInputNestedBase,
       stat: {
         isDirectory: always(true),
-        mode: startMode,
-      },
+        mode: startMode
+      }
     });
     var file2 = new File({
       base: destModesInputBase,
       path: destModesInputNestedBase,
       stat: {
         isDirectory: always(true),
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert() {
@@ -239,7 +239,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file1, file2]),
       vfs.dest(destModesOutputBase, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -250,7 +250,7 @@ describe('.dest() with custom modes', function() {
     var file = new File({
       base: destModesInputNestedBase,
       path: destModesInputNestedPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert() {
@@ -263,9 +263,9 @@ describe('.dest() with custom modes', function() {
       vfs.dest(destModesOutputBase, {
         cwd: __dirname,
         mode: expectedFileMode,
-        dirMode: expectedDirMode,
+        dirMode: expectedDirMode
       }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -279,8 +279,8 @@ describe('.dest() with custom modes', function() {
       path: destModesInputPath,
       contents: Buffer.from(contents),
       stat: {
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert() {
@@ -291,7 +291,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destModesOutputBase, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -306,8 +306,8 @@ describe('.dest() with custom modes', function() {
       path: destModesInputPath,
       contents: Buffer.from(contents),
       stat: {
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert() {
@@ -320,7 +320,7 @@ describe('.dest() with custom modes', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destModesOutputBase, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -334,8 +334,8 @@ describe('.dest() with custom modes', function() {
       path: destModesInputPath,
       contents: Buffer.from(contents),
       stat: {
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert(err) {
@@ -348,7 +348,7 @@ describe('.dest() with custom modes', function() {
 
     pipe([
       from.obj([file]),
-      vfs.dest(destModesOutputBase, { cwd: __dirname }),
+      vfs.dest(destModesOutputBase, { cwd: __dirname })
     ], assert);
   });
 });

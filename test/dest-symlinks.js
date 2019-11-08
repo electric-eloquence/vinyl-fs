@@ -52,8 +52,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -72,7 +72,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -82,8 +82,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(false),
-      },
+        isSymbolicLink: always(false)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -99,7 +99,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -109,8 +109,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     function assert(err) {
@@ -121,7 +121,7 @@ describe('.dest() with symlinks', function() {
 
     pipe([
       from.obj([file]),
-      vfs.dest(destSymlinksOutputBase),
+      vfs.dest(destSymlinksOutputBase)
     ], assert);
   });
 
@@ -131,8 +131,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -146,7 +146,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -156,8 +156,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -174,7 +174,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -184,8 +184,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputDirpath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -205,7 +205,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -215,8 +215,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputDirpath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -237,7 +237,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -247,8 +247,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputDirpath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -268,7 +268,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { useJunctions: false }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -278,8 +278,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputDirpath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -304,7 +304,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { useJunctions: useJunctions }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -314,8 +314,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputDirpath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -335,7 +335,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -345,8 +345,8 @@ describe('.dest() with symlinks', function() {
       path: neInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -367,7 +367,7 @@ describe('.dest() with symlinks', function() {
       // This could also be from a different Vinyl adapter
       from.obj([file]),
       vfs.dest(neOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -380,8 +380,8 @@ describe('.dest() with symlinks', function() {
       path: neInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -402,7 +402,7 @@ describe('.dest() with symlinks', function() {
       // This could also be from a different Vinyl adapter
       from.obj([file]),
       vfs.dest(neOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -412,8 +412,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputDirpath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -434,7 +434,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { useJunctions: true, relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -444,8 +444,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -462,7 +462,7 @@ describe('.dest() with symlinks', function() {
       from.obj([file]),
       // The useJunctions option is ignored when file is not a directory
       vfs.dest(destSymlinksOutputBase, { useJunctions: true, relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -472,8 +472,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputDirpath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -496,7 +496,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { useJunctions: false, relativeSymlinks: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -508,8 +508,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -528,7 +528,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { overwrite: false }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -541,8 +541,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -561,7 +561,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { overwrite: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -573,8 +573,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -598,7 +598,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { overwrite: overwrite }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -610,8 +610,8 @@ describe('.dest() with symlinks', function() {
       path: destSymlinksInputPath,
       contents: null,
       stat: {
-        isSymbolicLink: always(true),
-      },
+        isSymbolicLink: always(true)
+      }
     });
 
     // `src()` adds this side-effect with `resolveSymlinks` option set to false
@@ -635,7 +635,7 @@ describe('.dest() with symlinks', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destSymlinksOutputBase, { overwrite: overwrite }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 });

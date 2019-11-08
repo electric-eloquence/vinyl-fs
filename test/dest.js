@@ -53,7 +53,7 @@ function makeSourceMap() {
     names: [],
     mappings: '',
     sources: [inputRelative],
-    sourcesContent: [contents],
+    sourcesContent: [contents]
   };
 }
 
@@ -90,7 +90,7 @@ describe('.dest()', function() {
       base: destInputBase,
       path: destInputPath,
       contents: Buffer.from(contents),
-      sourceMap: makeSourceMap(),
+      sourceMap: makeSourceMap()
     });
 
     function assert(files) {
@@ -101,7 +101,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { sourcemaps: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -110,7 +110,7 @@ describe('.dest()', function() {
       base: destInputBase,
       path: destInputPath,
       contents: Buffer.from(contents),
-      sourceMap: makeSourceMap(),
+      sourceMap: makeSourceMap()
     });
 
     function assert(files) {
@@ -121,7 +121,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { sourcemaps: '.' }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -130,7 +130,7 @@ describe('.dest()', function() {
       base: destInputBase,
       path: destInputPath,
       contents: Buffer.from(contents),
-      sourceMap: makeSourceMap(),
+      sourceMap: makeSourceMap()
     });
 
     function assert(files) {
@@ -142,7 +142,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { sourcemaps: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -151,7 +151,7 @@ describe('.dest()', function() {
       base: destInputBase,
       path: destInputPath,
       contents: Buffer.from(contents),
-      sourceMap: makeSourceMap(),
+      sourceMap: makeSourceMap()
     });
 
     function assert(files) {
@@ -164,7 +164,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { sourcemaps: '.' }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -172,7 +172,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -184,7 +184,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(outputRelative, { cwd: __dirname }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -192,7 +192,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -204,7 +204,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -212,7 +212,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: null,
+      contents: null
     });
 
     function assert(files) {
@@ -228,7 +228,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -238,7 +238,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert(files) {
@@ -255,7 +255,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(outputRelative, { cwd: cwd }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -265,7 +265,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function outputFn(f) {
@@ -287,7 +287,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(outputFn, { cwd: cwd }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -295,7 +295,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert(files) {
@@ -311,7 +311,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -319,7 +319,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: from([contents]),
+      contents: from([contents])
     });
 
     function assert(files) {
@@ -335,7 +335,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -345,7 +345,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: string(size),
+      contents: string(size)
     });
 
     function assert(files) {
@@ -359,7 +359,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -369,8 +369,8 @@ describe('.dest()', function() {
       path: destInputDirpath,
       contents: null,
       stat: {
-        isDirectory: always(true),
-      },
+        isDirectory: always(true)
+      }
     });
 
     function assert(files) {
@@ -387,7 +387,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -395,7 +395,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert() {
@@ -412,7 +412,7 @@ describe('.dest()', function() {
       rename(outputRenamePath),
       includes({ path: outputRenamePath }),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -422,7 +422,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert(files) {
@@ -434,7 +434,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -442,7 +442,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert(err) {
@@ -457,7 +457,7 @@ describe('.dest()', function() {
 
     pipe([
       from.obj([file]),
-      vfs.dest(destOutputBase),
+      vfs.dest(destOutputBase)
     ], assert);
   });
 
@@ -471,8 +471,8 @@ describe('.dest()', function() {
       path: destInputPath,
       contents: Buffer.from(contents),
       stat: {
-        mode: expectedMode,
-      },
+        mode: expectedMode
+      }
     });
 
     function assert(err) {
@@ -485,7 +485,7 @@ describe('.dest()', function() {
 
     pipe([
       from.obj([file]),
-      vfs.dest(destOutputBase),
+      vfs.dest(destOutputBase)
     ], assert);
   });
 
@@ -495,7 +495,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert(files) {
@@ -511,7 +511,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { overwrite: false }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -521,7 +521,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert(files) {
@@ -537,7 +537,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { overwrite: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -547,7 +547,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function overwrite(f) {
@@ -568,7 +568,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { overwrite: overwrite }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -578,7 +578,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function overwrite(f) {
@@ -599,7 +599,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { overwrite: overwrite }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -609,7 +609,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function assert(files) {
@@ -625,7 +625,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { append: true }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -635,7 +635,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from(contents),
+      contents: Buffer.from(contents)
     });
 
     function append(f) {
@@ -656,7 +656,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { append: append }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -668,12 +668,12 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: Buffer.from('1234567890'),
+      contents: Buffer.from('1234567890')
     });
 
     pipe([
       from.obj([file]),
-      destStream,
+      destStream
     ]);
   });
 
@@ -685,7 +685,7 @@ describe('.dest()', function() {
       var file = new File({
         base: destInputBase,
         path: destInputPath,
-        contents: Buffer.from(contents),
+        contents: Buffer.from(contents)
       });
       highwatermarkFiles.push(file);
     }
@@ -695,7 +695,7 @@ describe('.dest()', function() {
       count(expectedCount),
       // Must be in the Writable position to test this
       // So concat-stream cannot be used
-      vfs.dest(destOutputBase),
+      vfs.dest(destOutputBase)
     ], done);
   });
 
@@ -709,7 +709,7 @@ describe('.dest()', function() {
       var file = new File({
         base: destInputBase,
         path: destInputPath,
-        contents: Buffer.from(contents),
+        contents: Buffer.from(contents)
       });
       highwatermarkFiles.push(file);
     }
@@ -718,7 +718,7 @@ describe('.dest()', function() {
       from.obj(highwatermarkFiles),
       count(expectedCount),
       vfs.dest(destOutputBase),
-      slowCount(expectedCount),
+      slowCount(expectedCount)
     ], done);
   });
 
@@ -726,7 +726,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputDirpath,
-      contents: null,
+      contents: null
     });
 
     var destStream = vfs.dest(destOutputBase);
@@ -748,7 +748,7 @@ describe('.dest()', function() {
 
     pipe([
       from.obj([file]),
-      destStream,
+      destStream
     ], assert);
   });
 
@@ -756,7 +756,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputDirpath,
-      contents: null,
+      contents: null
     });
 
     var destStream = vfs.dest(destOutputBase);
@@ -773,7 +773,7 @@ describe('.dest()', function() {
 
     pipe([
       from.obj([file]),
-      destStream,
+      destStream
     ], assert);
   });
 
@@ -785,7 +785,7 @@ describe('.dest()', function() {
       var file = new File({
         base: destInputBase,
         path: destInputPath,
-        contents: Buffer.from(contents),
+        contents: Buffer.from(contents)
       });
       highwatermarkFiles.push(file);
     }
@@ -799,7 +799,7 @@ describe('.dest()', function() {
       count(expectedCount),
       // Must be in the Writable position to test this
       // So concat-stream cannot be used
-      destStream,
+      destStream
     ], done);
 
     process.nextTick(function() {
@@ -815,7 +815,7 @@ describe('.dest()', function() {
       var file = new File({
         base: destInputBase,
         path: destInputPath,
-        contents: Buffer.from(contents),
+        contents: Buffer.from(contents)
       });
       highwatermarkFiles.push(file);
     }
@@ -829,7 +829,7 @@ describe('.dest()', function() {
       count(expectedCount),
       // Must be in the Writable position to test this
       // So concat-stream cannot be used
-      destStream,
+      destStream
     ], done);
 
     process.nextTick(function() {
@@ -841,12 +841,12 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: from([contents]),
+      contents: from([contents])
     });
 
     pipe([
       from.obj([file]),
-      vfs.dest(destOutputBase),
+      vfs.dest(destOutputBase)
     ], done);
   });
 
@@ -861,7 +861,7 @@ describe('.dest()', function() {
 
     pipe([
       from.obj([file]),
-      vfs.dest(destOutputBase),
+      vfs.dest(destOutputBase)
     ], assert);
   });
 
@@ -876,7 +876,7 @@ describe('.dest()', function() {
 
     pipe([
       from([file]),
-      vfs.dest(destOutputBase),
+      vfs.dest(destOutputBase)
     ], assert);
   });
 
@@ -887,8 +887,8 @@ describe('.dest()', function() {
       contents: null,
       stat: {
         isDirectory: always(true),
-        mode: applyUmask('000'),
-      },
+        mode: applyUmask('000')
+      }
     });
 
     function assert() {
@@ -899,7 +899,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
@@ -911,8 +911,8 @@ describe('.dest()', function() {
       path: destInputDirpath,
       contents: null,
       stat: {
-        isDirectory: always(true),
-      },
+        isDirectory: always(true)
+      }
     });
 
     function assert(err) {
@@ -923,7 +923,7 @@ describe('.dest()', function() {
 
     pipe([
       from.obj([file]),
-      vfs.dest(destOutputBase),
+      vfs.dest(destOutputBase)
     ], assert);
   });
 
@@ -935,7 +935,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: contentStream,
+      contents: contentStream
     });
 
     function assert(err) {
@@ -945,7 +945,7 @@ describe('.dest()', function() {
 
     pipe([
       from.obj([file]),
-      vfs.dest(destOutputBase),
+      vfs.dest(destOutputBase)
     ], assert);
   });
 
@@ -953,7 +953,7 @@ describe('.dest()', function() {
     var file = new File({
       base: destInputBase,
       path: destInputPath,
-      contents: null,
+      contents: null
     });
 
     var mockFn = jest.fn();
@@ -967,14 +967,14 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase, { read: read }),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
   it('does not marshall a Vinyl object with isSymbolic method', function(done) {
     var file = new File({
       base: destOutputBase,
-      path: destOutputPath,
+      path: destOutputPath
     });
 
     function assert(files) {
@@ -988,14 +988,14 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 
   it('marshalls a Vinyl object without isSymbolic to a newer Vinyl', function(done) {
     var file = new File({
       base: destOutputBase,
-      path: destOutputPath,
+      path: destOutputPath
     });
 
     breakPrototype(file);
@@ -1011,7 +1011,7 @@ describe('.dest()', function() {
     pipe([
       from.obj([file]),
       vfs.dest(destOutputBase),
-      concat(assert),
+      concat(assert)
     ], done);
   });
 });
