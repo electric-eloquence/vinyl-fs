@@ -1,5 +1,7 @@
 # vinyl-fs changelog
 
+### 3.0.6
+
 ### 3.0.5
 * Replaced graceful-fs with fs
 * Updates to readme, license, and continuous integration configs
