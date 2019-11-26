@@ -1,6 +1,7 @@
 # vinyl-fs changelog
 
 ### 3.0.6
+* Dependency downgraded to avoid redundant npm downloads
 
 ### 3.0.5
 * Replaced graceful-fs with fs
