@@ -1,5 +1,7 @@
 # vinyl-fs changelog
 
+### 3.0.7
+
 ### 3.0.6
 * Dependency downgraded to avoid redundant npm downloads
 
