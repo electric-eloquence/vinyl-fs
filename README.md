@@ -6,7 +6,6 @@
 [![Mac/Linux Build Status][travis-image]][travis-url]
 [![Windows Build Status][appveyor-image]][appveyor-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
-![Node Version][node-version-image]
 [![License][license-image]][license-url]
 
 ### This package provides long-term support for `vinyl-fs` at major version 3.
@@ -342,8 +341,6 @@ gratitude are due for
 
 [coveralls-image]: https://img.shields.io/coveralls/electric-eloquence/vinyl-fs/v3-lts.svg
 [coveralls-url]: https://coveralls.io/github/electric-eloquence/vinyl-fs?branch=v3-lts
-
-[node-version-image]: https://img.shields.io/node/v/@electric-eloquence/vinyl-fs.svg
 
 [license-image]: https://img.shields.io/github/license/electric-eloquence/vinyl-fs.svg
 [license-url]: https://raw.githubusercontent.com/electric-eloquence/vinyl-fs/v3-lts/LICENSE
