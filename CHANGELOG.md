@@ -1,5 +1,7 @@
 # vinyl-fs changelog
 
+### 3.0.8
+
 ### 3.0.7
 * Correction to documentation
 
