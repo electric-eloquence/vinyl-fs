@@ -15,7 +15,7 @@ long-term support for gulp at major version 3</a>.
 
 ## What is Vinyl?
 
-[Vinyl][vinyl] is a very simple metadata object that describes a file. When you think of a file, two attributes come to mind: `path` and `contents`. These are the main attributes on a [Vinyl][vinyl] object. A file does not necessarily represent something on your computer’s file system. You have files on S3, FTP, Dropbox, Box, CloudThingly.io and other services. [Vinyl][vinyl] can be used to describe files from all of these sources.
+[Vinyl][vinyl] is a very simple metadata object that describes a file. When you think of a file, two properties come to mind: `path` and `contents`. These are the main properties on a [Vinyl][vinyl] object. A file does not necessarily represent something on your computer’s file system. You have files on S3, FTP, Dropbox, Box, CloudThingly.io, and other services. [Vinyl][vinyl] can be used to describe files from all of these sources.
 
 ## What is a Vinyl Adapter?
 
@@ -59,13 +59,13 @@ Globs are executed in order, so negations should follow positive globs.
 For example:
 
 ```js
-fs.src(['!b*', '*'])
+vfs.src(['!b*', '*'])
 ```
 
 would not exclude any files, but the following would exclude all files starting with "b":
 
 ```js
-fs.src(['*', '!b*'])
+vfs.src(['*', '!b*'])
 ```
 
 #### Options
