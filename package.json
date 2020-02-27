@@ -1,7 +1,7 @@
 {
   "name": "@electric-eloquence/vinyl-fs",
   "version": "3.0.8",
-  "description": "Vinyl adapter for the file system.",
+  "description": "Vinyl adapter for the file system with long-term support at v3",
   "author": "Gulp Team <team@gulpjs.com> (http://gulpjs.com/)",
   "contributors": [
     "Eric Schoffstall <yo@contra.io>",
@@ -49,12 +49,18 @@
     "rimraf": "^2.7.1"
   },
   "keywords": [
-    "gulp",
-    "vinyl-adapter",
-    "vinyl",
     "file",
     "file system",
     "fs",
-    "streams"
+    "gulp",
+    "gulp 3",
+    "long",
+    "long-term",
+    "long-term support",
+    "lts",
+    "streams",
+    "term",
+    "vinyl",
+    "vinyl-adapter"
   ]
 }
