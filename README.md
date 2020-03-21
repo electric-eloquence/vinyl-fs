@@ -1,4 +1,4 @@
-# vinyl-fs
+# vinyl-fs 3 lts
 
 > [Vinyl][vinyl] adapter for the file system.
 
