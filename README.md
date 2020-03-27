@@ -334,14 +334,14 @@ gratitude are due for
 [snyk-image]: https://snyk.io/test/github/electric-eloquence/vinyl-fs/v3-lts/badge.svg
 [snyk-url]: https://snyk.io/test/github/electric-eloquence/vinyl-fs/v3-lts
 
-[linux-image]: https://github.com/electric-eloquence/fepper-npm/workflows/Linux%20build/badge.svg?branch=v3-lts
-[linux-url]: https://github.com/electric-eloquence/fepper-npm/actions?query=workflow%3A"Linux+build"
+[linux-image]: https://github.com/electric-eloquence/vinyl-fs/workflows/Linux%20build/badge.svg?branch=v3-lts
+[linux-url]: https://github.com/electric-eloquence/vinyl-fs/actions?query=workflow%3A"Linux+build"
 
-[mac-image]: https://github.com/electric-eloquence/fepper-npm/workflows/Mac%20build/badge.svg?branch=v3-lts
-[mac-url]: https://github.com/electric-eloquence/fepper-npm/actions?query=workflow%3A"Mac+build"
+[mac-image]: https://github.com/electric-eloquence/vinyl-fs/workflows/Mac%20build/badge.svg?branch=v3-lts
+[mac-url]: https://github.com/electric-eloquence/vinyl-fs/actions?query=workflow%3A"Mac+build"
 
-[windows-image]: https://github.com/electric-eloquence/fepper-npm/workflows/Windows%20build/badge.svg?branch=v3-lts
-[windows-url]: https://github.com/electric-eloquence/fepper-npm/actions?query=workflow%3A"Windows+build"
+[windows-image]: https://github.com/electric-eloquence/vinyl-fs/workflows/Windows%20build/badge.svg?branch=v3-lts
+[windows-url]: https://github.com/electric-eloquence/vinyl-fs/actions?query=workflow%3A"Windows+build"
 
 [coveralls-image]: https://img.shields.io/coveralls/electric-eloquence/vinyl-fs/v3-lts.svg
 [coveralls-url]: https://coveralls.io/github/electric-eloquence/vinyl-fs?branch=v3-lts
