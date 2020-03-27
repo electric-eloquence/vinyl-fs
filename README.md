@@ -3,8 +3,9 @@
 > [Vinyl][vinyl] adapter for the file system.
 
 [![Known Vulnerabilities][snyk-image]][snyk-url]
-[![Mac/Linux Build Status][travis-image]][travis-url]
-[![Windows Build Status][appveyor-image]][appveyor-url]
+[![Linux Build Status][linux-image]][linux-url]
+[![Mac Build Status][mac-image]][mac-url]
+[![Windows Build Status][windows-image]][windows-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![License][license-image]][license-url]
 
@@ -333,11 +334,14 @@ gratitude are due for
 [snyk-image]: https://snyk.io/test/github/electric-eloquence/vinyl-fs/v3-lts/badge.svg
 [snyk-url]: https://snyk.io/test/github/electric-eloquence/vinyl-fs/v3-lts
 
-[travis-image]: https://img.shields.io/travis/electric-eloquence/vinyl-fs/v3-lts.svg?label=mac%20%26%20linux
-[travis-url]: https://travis-ci.org/electric-eloquence/vinyl-fs
+[linux-image]: https://github.com/electric-eloquence/fepper-npm/workflows/Linux%20build/badge.svg?branch=v3-lts
+[linux-url]: https://github.com/electric-eloquence/fepper-npm/actions?query=workflow%3A"Linux+build"
 
-[appveyor-image]: https://img.shields.io/appveyor/ci/e2tha-e/vinyl-fs/v3-lts.svg?label=windows
-[appveyor-url]: https://ci.appveyor.com/project/e2tha-e/vinyl-fs
+[mac-image]: https://github.com/electric-eloquence/fepper-npm/workflows/Mac%20build/badge.svg?branch=v3-lts
+[mac-url]: https://github.com/electric-eloquence/fepper-npm/actions?query=workflow%3A"Mac+build"
+
+[windows-image]: https://github.com/electric-eloquence/fepper-npm/workflows/Windows%20build/badge.svg?branch=v3-lts
+[windows-url]: https://github.com/electric-eloquence/fepper-npm/actions?query=workflow%3A"Windows+build"
 
 [coveralls-image]: https://img.shields.io/coveralls/electric-eloquence/vinyl-fs/v3-lts.svg
 [coveralls-url]: https://coveralls.io/github/electric-eloquence/vinyl-fs?branch=v3-lts
