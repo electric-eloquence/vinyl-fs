@@ -32,6 +32,13 @@ jobs:
       run: |
         npm install
         npm test
+        npx nyc report --reporter=text-lcov > ./.lcov.info
+
+    - name: Coverage
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ./.lcov.info
 
       env:
         CI: true
