@@ -32,8 +32,3 @@ jobs:
         run: |
           npm install
           npm test
-
-      - name: Coverage
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
