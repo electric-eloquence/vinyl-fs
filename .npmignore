@@ -1,5 +1,6 @@
 *.log
 .*
+!.gitkeep
 coverage/
 jest.config.js
 test/
