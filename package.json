@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "coveralls": "3.x",
-    "eslint": "6.x",
+    "eslint": "7.x",
     "expect": "24.x",
     "jest": "24.x",
     "mississippi": "^3.0.0",
