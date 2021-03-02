@@ -25,26 +25,28 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "extend": "^3.0.0",
+    "extend": "^3.0.2",
     "fs-mkdirp-stream": "^1.0.0",
-    "glob": "^7.1.1",
+    "glob": "^7.1.6",
+    "is-glob": "^4.0.1",
     "is-negated-glob": "^1.0.0",
     "is-valid-glob": "^1.0.0",
     "lazystream": "^1.0.0",
     "lead": "^1.0.0",
-    "object.assign": "^4.1.0",
-    "ordered-read-streams": "^1.0.0",
+    "object.assign": "^4.1.2",
+    "ordered-read-streams": "^1.0.1",
     "pumpify": "^1.5.1",
-    "readable-stream": "^2.1.5",
+    "readable-stream": "^2.3.7",
     "remove-bom-buffer": "^3.0.0",
     "remove-bom-stream": "^1.2.0",
     "remove-trailing-separator": "^1.0.1",
     "resolve-options": "^1.1.0",
+    "slash": "^3.0.0",
     "through2": "^2.0.5",
-    "to-absolute-glob": "^2.0.0",
+    "to-absolute-glob": "^2.0.2",
     "to-through": "^2.0.0",
-    "unique-stream": "^2.0.2",
-    "vinyl": "^2.2.0",
+    "unique-stream": "^2.3.1",
+    "vinyl": "^2.2.1",
     "vinyl-sourcemap": "^1.1.0"
   },
   "devDependencies": {
@@ -52,8 +54,8 @@
     "eslint": "7.x",
     "expect": "24.x",
     "jest": "24.x",
-    "mississippi": "^3.0.0",
-    "rimraf": "^2.7.1"
+    "mississippi": "^4.0.0",
+    "rimraf": "^3.0.2"
   },
   "keywords": [
     "file",
