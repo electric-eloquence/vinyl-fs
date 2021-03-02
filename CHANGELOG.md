@@ -1,6 +1,7 @@
 # vinyl-fs changelog
 
 ### 3.0.8
+* Replaced glob-parent dependency and its regex dos vulnerability
 
 ### 3.0.7
 * Correction to documentation
