@@ -24,7 +24,7 @@ describe('glob-stream', function() {
     it('streams a single object when given a directory path', function(done) {
       var expected = {
         cwd: dir,
-        base: dir + '/fixtures',
+        base: dir + '/fixtures/',
         path: dir + '/fixtures/whatsgoingon'
       };
 
@@ -42,7 +42,7 @@ describe('glob-stream', function() {
     it('streams a single object when given a file path', function(done) {
       var expected = {
         cwd: dir,
-        base: dir + '/fixtures',
+        base: dir + '/fixtures/',
         path: dir + '/fixtures/test.coffee'
       };
 
@@ -313,17 +313,17 @@ describe('glob-stream', function() {
       var expected = [
         {
           cwd: process.cwd(),
-          base: dir + '/fixtures/whatsgoingon/hey/isaidhey/whatsgoingon',
+          base: dir + '/fixtures/whatsgoingon/hey/isaidhey/whatsgoingon/',
           path: dir + '/fixtures/whatsgoingon/hey/isaidhey/whatsgoingon/test.txt'
         },
         {
           cwd: process.cwd(),
-          base: dir + '/fixtures',
+          base: dir + '/fixtures/',
           path: dir + '/fixtures/test.coffee'
         },
         {
           cwd: process.cwd(),
-          base: dir + '/fixtures/whatsgoingon',
+          base: dir + '/fixtures/whatsgoingon/',
           path: dir + '/fixtures/whatsgoingon/test.js'
         }
       ];
@@ -348,7 +348,7 @@ describe('glob-stream', function() {
     it('removes duplicate objects from the stream using default (path) filter', function(done) {
       var expected = {
         cwd: dir,
-        base: dir + '/fixtures',
+        base: dir + '/fixtures/',
         path: dir + '/fixtures/test.coffee'
       };
 
@@ -366,7 +366,7 @@ describe('glob-stream', function() {
     it('removes duplicate objects from the stream using custom string filter', function(done) {
       var expected = {
         cwd: dir,
-        base: dir + '/fixtures/stuff',
+        base: dir + '/fixtures/stuff/',
         path: dir + '/fixtures/stuff/run.dmc'
       };
 
@@ -454,7 +454,7 @@ describe('glob-stream', function() {
     it('respects pause/resume', function(done) {
       var expected = {
         cwd: dir,
-        base: dir + '/fixtures',
+        base: dir + '/fixtures/',
         path: dir + '/fixtures/test.coffee'
       };
 
@@ -479,7 +479,7 @@ describe('glob-stream', function() {
     it('works with direct paths and no cwd', function(done) {
       var expected = {
         cwd: process.cwd(),
-        base: dir + '/fixtures',
+        base: dir + '/fixtures/',
         path: dir + '/fixtures/test.coffee'
       };
 
@@ -554,7 +554,7 @@ describe('glob-stream', function() {
     it('respects order of negative globs', function(done) {
       var expected = {
         cwd: dir,
-        base: dir + '/fixtures/stuff',
+        base: dir + '/fixtures/stuff/',
         path: dir + '/fixtures/stuff/run.dmc'
       };
 
@@ -578,7 +578,7 @@ describe('glob-stream', function() {
     it('ignores leading negative globs', function(done) {
       var expected = {
         cwd: dir,
-        base: dir + '/fixtures/stuff',
+        base: dir + '/fixtures/stuff/',
         path: dir + '/fixtures/stuff/run.dmc'
       };
 
@@ -673,7 +673,7 @@ describe('glob-stream', function() {
     it('resolves absolute paths when root option is given', function(done) {
       var expected = {
         cwd: process.cwd(),
-        base: dir + '/fixtures',
+        base: dir + '/fixtures/',
         path: dir + '/fixtures/test.coffee'
       };
 
@@ -849,7 +849,7 @@ describe('glob-stream', function() {
     it('accepts a file path', function(done) {
       var expected = {
         cwd: dir,
-        base: dir + '/fixtures',
+        base: dir + '/fixtures/',
         path: dir + '/fixtures/test.coffee'
       };
 
